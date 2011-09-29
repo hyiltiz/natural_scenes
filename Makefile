@@ -41,25 +41,37 @@ copytocvis:
 thumbs:
 	cat file_sets.txt | xargs --verbose -P1 -I{} sh -c "montage -geometry 42x28+1+1 -tile 14x -gamma 2.9 \`find $(PPM_SRC) -name '{}*.ppm'\` {}.montage.png"
 
-EXAMPLESSRC1=$(WEB)/images1
-EXAMPLESSRC2=$(WEB)/images2
-RGB_AHD_CMD1="dcraw -6 -q 3 -o 0 -v -c {} | convert -contrast-stretch 2%x1% -depth 8 - tmp/\`basename {} .nef\`.ppm"
-RGB_AHD_CMD2="dcraw -6 -q 3 -o 0 -v -c {} | convert -contrast-stretch 2%x1% -depth 8 -crop 1070x710+1606+1066 - tmp/\`basename {} .nef\`.ppm"
+EXAMPLESSRC1=$(WEB)/images1/*.16bit.ppm
+EXAMPLESSRC2=$(WEB)/images2/*.nef
+EXAMPLESDEST1_2x2=super_resolution_images1_2x2
+EXAMPLESDEST2_2x2=super_resolution_images2_2x2
+EXAMPLESDEST1_4x4=super_resolution_images1_4x4
+EXAMPLESDEST2_4x4=super_resolution_images2_4x4
+RGB_AHD_CMD1_2x2="convert -crop 1070x710+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_2x2)/\`basename {} .16bit.ppm\`.ppm"
+RGB_AHD_CMD2_2x2="dcraw -6 -q 3 -o 0 -v -c {} | convert -crop 1070x710+1606+1066 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_2x2)/\`basename {} .nef\`.ppm"
+RGB_AHD_CMD2_4x4="dcraw -6 -q 3 -o 0 -v -c {} | convert -crop 535x355+1874+1244 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_4x4)/\`basename {} .nef\`.ppm"
 
-examples:
+# These must be done manually
+# RGB_AHD_CMD1_4x4="convert -crop 268x178 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_4x4)/\`basename {} .16bit.ppm\`.ppm"
 
 convert_examples:
-	mkdir -p tmp
-	rm -f tmp/*
-	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P12 -I{} sh -c $(RGB_AHD_CMD1)
-	find $(EXAMPLESSRC2) -name "*.nef" | xargs -P12 -I{} sh -c $(RGB_AHD_CMD2)
+	mkdir -p $(EXAMPLESDEST1_2x2)
+	mkdir -p $(EXAMPLESDEST2_2x2)
+	mkdir -p $(EXAMPLESDEST2_4x4)
+	rm -f $(EXAMPLESDEST1_2x2)/*
+	rm -f $(EXAMPLESDEST2_2x2)/*
+	rm -f $(EXAMPLESDEST2_4x4)/*
+	find $(EXAMPLESSRC1) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD1_2x2)
+	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD2_2x2)
+	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD2_4x4)
 
-EXAMPLESDEST=./super_resolution_examples
+EXAMPLESDEST=super_resolution_examples
 
 create_examples:
 	mkdir -p $(EXAMPLESDEST)
 	rm -f $(EXAMPLESDEST)/*
-	find tmp/ -name "*.ppm" | xargs -P12 -I{} ./create_example.sh {} $(EXAMPLESDEST)
+	rm -f sr1_4x4.shtml
+	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_4x4.sh {} sr1_4x4.shtml $(EXAMPLESDEST)
 
 clean:
 	rm -f file_sets.txt
