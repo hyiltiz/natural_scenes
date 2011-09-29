@@ -60,3 +60,9 @@ create_examples:
 	mkdir -p $(EXAMPLESDEST)
 	rm -f $(EXAMPLESDEST)/*
 	find tmp/ -name "*.ppm" | xargs -P12 -I{} ./create_example.sh {} $(EXAMPLESDEST)
+
+clean:
+	rm -f file_sets.txt
+	rm *.montage.png
+	rm -rf tmp
+
