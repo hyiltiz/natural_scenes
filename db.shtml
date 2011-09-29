@@ -1,0 +1,142 @@
+<!--#include virtual="open.shtml" -->
+<!--#include virtual="header.shtml" -->
+
+<div class="content">
+
+<p><h2>Database Usage</h2>
+This database may be used for research and non-commercial purposes.
+<p>
+Please cite the following article in any published work that is based on these data:
+<div class="citation">
+<a href="Geisler-Perry-JOV-final.pdf">
+Geisler WS & Perry JS (2011) Statistics for optimal point prediction in
+natural images.  Journal of Vision (in press).
+</a>
+</div>
+<p><h2>Image Collection</h2>
+<table>
+<tr><td>Total images</td><td>1204</td></tr>
+<tr><td>Capture device</td><td>Nikon D700 Digital SLR</td></tr>
+<tr><td>Lens</td><td>Sigma 50mm 1:2.8 DG Macro</td></tr>
+<tr><td>Pixel format</td><td>14 bits per channel RGB</td></tr>
+<tr><td>Image resolution</td><td>4284 x 2844</td></tr>
+<tr><td>Exposure index</td><td>ISO 200</td></tr>
+<tr><td>Sensor type</td><td>FX-format 23.9x36mm CMOS</td></tr>
+<tr><td>Location</td><td>Austin, Texas, USA and surrounding areas</td></tr>
+</table>
+<br>
+<h2>Calibration</h2>
+<a class="plot" href="pixel_sensitivities.txt"><img src="rgb_pixel_responses_plot.png"
+width=180 height=150 align=top></a>
+The Nikon D700 camera was calibrated by <a
+href="http://jburge.cps.utexas.edu">Johannes Burge</a>.
+<p>You may use the resulting pixel sensitivity functions to convert the image
+RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
+<div id="clear"> </div>
+<!--
+<p>
+<a class="plot" href="rgb_response_linearity_plot.png"><img src="rgb_response_linearity_plot.png"
+width=180 height=150 align=top></a>
+The plot demonstrates the near linear relationship between the sensor's
+exposure and its response magnitude.
+<div id="clear"> </div>
+-->
+
+<!--
+<h2>Conversion</h2>
+<p>
+To convert from RGB responses to scaled LMS cone responses, apply the following
+conversion matrix:<br>
+<p>
+<code>
+0.7312 0.1891 -0.0181<br>
+0.9183 1.0358 -0.0300<br>
+0.0094 0.0700 0.8372<br>
+</code>
+<p>
+To convert from scaled LMS cone responses to approximate photon counts, you will
+need to rescale the cone responses using the aperture and shutter speed
+settings provided in the exif files below.
+-->
+
+<h2>Image Sets</h2>
+The database consists of nine image sets and nine corresponding metadata
+sets, each archived into a
+<a href = "http://en.wikipedia.org/wiki/ZIP_(file_format)">ZIP format</a>
+file.
+<p>
+The 4284 x 2844 pixel, 14-bit
+<a href="http://en.wikipedia.org/wiki/Raw_image_format">NEF format</a> images were converted to
+<a href="http://en.wikipedia.org/wiki/Netpbm_format">PPM format</a> using
+<a href="http://en.wikipedia.org/wiki/Dcraw">dcraw</a> v8.99 with the
+options "<code>-4 -o 1 -q 3</code>".
+<p>
+The metadata text files contain shutterspeeds, aperture settings, capture
+data and time, GPS coordinates, and other
+<a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">Exif file format</a>
+information.
+<p>
+Total disk space required for the database is 82GB.
+<p>
+Note that the thumbnail images below have been gamma corrected whereas
+the images contained in the archives have no gamma correction.
+<h3>
+Set 1
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100428.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100428.ppm.zip"><img src="cps20100428.montage.png"></a>
+<h3>
+Set 2
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100429.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100429.ppm.zip"><img src="cps20100429.montage.png"></a>
+<h3>
+Set 3
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100430.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100430.ppm.zip"><img src="cps20100430.montage.png"></a>
+<h3>
+Set 4
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100502.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100502.ppm.zip"><img src="cps20100502.montage.png"></a>
+<h3>
+Set 5
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100503.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100503.ppm.zip"><img src="cps20100503.montage.png"></a>
+<h3>
+Set 6
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100511.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100511.ppm.zip"><img src="cps20100511.montage.png"></a>
+<h3>
+Set 7
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100513.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100513.ppm.zip"><img src="cps20100513.montage.png"></a>
+<h3>
+Set 8
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101008.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101008.ppm.zip"><img src="cps20101008.montage.png"></a>
+<h3>
+Set 9
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101012.exif.zip">[metadata]</a>
+</h3>
+<a class="imglink"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101012.ppm.zip"><img src="cps20101012.montage.png"></a>
+
+</div>
+
+<!--#include virtual="menu.shtml" -->
+<!--#include virtual="footer.shtml" -->
+<!--#include virtual="close.shtml" -->

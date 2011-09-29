@@ -1,0 +1,22 @@
+<!--#include virtual="open.shtml" -->
+<!--#include virtual="header.shtml" -->
+
+<div class="content">
+
+<p><h2>Super-resolution</h2>
+<p>
+In the following examples, you may open each image in a new browser tab and then
+switch between tabs to compare image quality.
+<p>
+Many browsers will open a new tab by control-clicking, or right clicking (Windows, Linux) or by
+command-clicking (Mac).
+<p><h3>General Images</h3>
+<!--#include virtual="sr1.shtml" -->
+<p><h3>Natural Images</h3>
+<!--#include virtual="sr2.shtml" -->
+
+</div>
+
+<!--#include virtual="menu.shtml" -->
+<!--#include virtual="footer.shtml" -->
+<!--#include virtual="close.shtml" -->
