@@ -1,5 +1,5 @@
 #main {
-	width: 900px;
+	width: 800px;
 	border: #000000 1px solid;
 	margin: 0 auto;
 	background-color: #ffffff;
@@ -26,15 +26,8 @@
 	height: 1px;
 	overflow: hidden;
 }
-#example {
-	display: block;
-	padding: 100px 100px 100px 100px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
 .menu {
-	width: 250px;
+	width: 220px;
 	padding: 0 20px 0 20px;
 	font-size: 100%;
 }
@@ -47,9 +40,13 @@
 }
 .content {
 	float: right;
-	width: 650px;
-	padding: 20px 20px 20px 30px;
+	width: 550px;
+	padding: 20px 40px 40px 20px;
 	text-align: left;
+}
+.example_set {
+	padding: 0px 20px 0px 0px;
+	display: inline;
 }
 .imglink {
 	border: 0px solid #000000;
@@ -86,26 +83,16 @@ h1 {
 	font-size: 130%;
 	float: left;
 	vertical-align: middle;
-	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 h2 {
 	font-size: 100%;
-	margin: 20px 0px 20px 0px;
+	padding: 20px 10px 10px 0px;
 }
 h3 {
 	font-weight: normal;
 	font-size: 100%;
-	margin: 20px 0px 10px 0px;
-}
-h4 {
-	font-weight: normal;
-	font-size: 100%;
-	margin: 5px 0px 0px 0px;
-}
-p {
-	margin: 0px;
-	padding: 10px 0 10px 0;
-	text-align: left;
+	padding: 10px 10px 10px 0px;
 }
 table {
 	border: 0px solid #000000;

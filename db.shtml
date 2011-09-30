@@ -5,7 +5,6 @@
 
 <p><h2>Database Usage</h2>
 This database may be used for research and non-commercial purposes.
-<p>
 Please cite the following article in any published work that is based on these data:
 <div class="citation">
 <a href="Geisler-Perry-JOV-final.pdf">
@@ -78,8 +77,10 @@ information.
 <p>
 Total disk space required for the database is 82GB.
 <p>
-Note that the thumbnail images below have been gamma corrected whereas
-the images contained in the archives have no gamma correction.
+Note that the thumbnail images below have been gamma corrected and their dynamic
+range has been adjusted so that they are easier to view on an 8-bit per channel
+monitor.  The 16-bit images contained in the archives are not gamma corrected
+and have not been adjusted in this way.
 <h3>
 Set 1
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100428.exif.zip">[metadata]</a>
