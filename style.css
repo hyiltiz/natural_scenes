@@ -12,6 +12,13 @@
 	background-position: 80%; /*right;*/
 	background-repeat: no-repeat;
 }
+#example_page {
+	display: block;
+	padding: 100px 100px 100px 100px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
 #footer {
 	width: 100%;
 	padding: 20px 0px 20px 0px;
@@ -43,10 +50,6 @@
 	width: 550px;
 	padding: 20px 40px 40px 20px;
 	text-align: left;
-}
-.example_set {
-	padding: 0px 20px 0px 0px;
-	display: inline;
 }
 .imglink {
 	border: 0px solid #000000;

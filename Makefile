@@ -52,9 +52,9 @@ EXAMPLESDEST1_2x2=super_resolution_images1_2x2
 EXAMPLESDEST2_2x2=super_resolution_images2_2x2
 EXAMPLESDEST1_4x4=super_resolution_images1_4x4
 EXAMPLESDEST2_4x4=super_resolution_images2_4x4
-RGB_AHD_CMD1_2x2="convert -crop 1070x710+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_2x2)/\`basename {} .16bit.ppm\`.ppm"
-RGB_AHD_CMD2_2x2="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1070x710+1606+1066 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_2x2)/\`basename {} .nef\`.ppm"
-RGB_AHD_CMD2_4x4="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 256x170+1874+1244 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_4x4)/\`basename {} .nef\`.ppm"
+RGB_AHD_CMD1_2x2="convert -crop 1070x710+0+0 -resize 50% -crop 512x340+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_2x2)/\`basename {} .16bit.ppm\`.ppm"
+RGB_AHD_CMD2_2x2="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 512x340+1886+1252 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_2x2)/\`basename {} .nef\`.ppm"
+RGB_AHD_CMD2_4x4="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 256x170+2014+1337 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_4x4)/\`basename {} .nef\`.ppm"
 
 # These must be done manually
 # RGB_AHD_CMD1_4x4="convert -crop 268x178 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_4x4)/\`basename {} .16bit.ppm\`.ppm"
@@ -73,31 +73,37 @@ convert_examples:
 EXAMPLES2x2=super_resolution_examples_2x2
 EXAMPLES4x4=super_resolution_examples_4x4
 
-create_examples_2x2:
+clean_example_pages:
 	mkdir -p $(EXAMPLES2x2)
+	mkdir -p $(EXAMPLES4x4)
 	rm -f $(EXAMPLES2x2)/*
-	cp style.css $(EXAMPLES2x2)
+	rm -f $(EXAMPLES4x4)/*
 	rm -f sr1_2x2.shtml
 	rm -f sr2_2x2.shtml
-	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_2x2.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_2x2.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
-
-create_examples_4x4:
-	mkdir -p $(EXAMPLES4x4)
-	rm -f $(EXAMPLES4x4)/*
-	cp style.css $(EXAMPLES4x4)
 	rm -f sr1_4x4.shtml
 	rm -f sr2_4x4.shtml
-	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_4x4.sh {} sr1_4x4.shtml $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_4x4.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
+	cp style.css $(EXAMPLES2x2)
+	cp style.css $(EXAMPLES4x4)
 
-create_examples: create_examples_2x2 create_examples_4x4
+create_example_pages:
+	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
+	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
+	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4)
+	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
+
+create_example_images:
+	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
+	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
+
+create_examples: clean_examples_pages create_example_pages
 
 clean:
 	rm -f file_sets.txt
-	rm *.montage.png
+	rm -f *.montage.png
+	rm -f *.montage.png
+	rm -f sr?_2x2.shtml
+	rm -f sr?_4x4.shtml
 	rm -f $(EXAMPLES2x2)/*
 	rm -f $(EXAMPLES4x4)/*
-	rm -f $(EXAMPLESDEST1_2x2)/*
-	rm -f $(EXAMPLESDEST2_2x2)/*
-	rm -f $(EXAMPLESDEST2_4x4)/*

@@ -5,19 +5,13 @@
 
 <p><h2>Super-resolution</h2>
 <p>
-To compare upsampling methods, open the an image in two or more browser tabs
-that has been upsampled using different methods.  Then switch between tabs and
-note the change in image quality.  Hover the mouse over each thumbnail to
-determine the upsampling method.
-<p>
-Many browsers will open a new tab by control-clicking or right-clicking (Windows, Linux) or by
-command-clicking (Mac).
+To compare upsampling methods, select a thumbnail below.
 <h3>General Images 4x Upsampling</h3>
 <!--#include virtual="sr1_4x4.shtml" -->
-<h3>Natural Images 4x Upsampling</h3>
-<!--#include virtual="sr2_4x4.shtml" -->
 <h3>General Images 2x Upsampling</h3>
 <!--#include virtual="sr1_2x2.shtml" -->
+<h3>Natural Images 4x Upsampling</h3>
+<!--#include virtual="sr2_4x4.shtml" -->
 <h3>Natural Images 2x Upsampling</h3>
 <!--#include virtual="sr2_2x2.shtml" -->
 
