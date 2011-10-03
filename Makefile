@@ -48,29 +48,21 @@ thumbs: file_sets
 montages: file_sets
 	@cat file_sets.txt | xargs --verbose -P1 -I{} sh -c "montage -geometry 42x28+1+1 -tile 12x \`find $(THUMBS_DEST) -name '{}*.png'\` {}.montage.png"
 
-EXAMPLESSRC1=$(WEB)/images1/*.16bit.ppm
-EXAMPLESSRC2=$(WEB)/images2/*.nef
-EXAMPLESDEST1_2x2=super_resolution_images1_2x2
-EXAMPLESDEST2_2x2=super_resolution_images2_2x2
-EXAMPLESDEST1_4x4=super_resolution_images1_4x4
-EXAMPLESDEST2_4x4=super_resolution_images2_4x4
-RGB_AHD_CMD1_2x2="convert -crop 1070x710+0+0 -resize 50% -crop 512x340+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_2x2)/\`basename {} .16bit.ppm\`.ppm"
-RGB_AHD_CMD2_2x2="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 512x340+1886+1252 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_2x2)/\`basename {} .nef\`.ppm"
-RGB_AHD_CMD2_4x4="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 256x170+2014+1337 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST2_4x4)/\`basename {} .nef\`.ppm"
+EXAMPLESSRC1=$(WEB)/images1/*.nef
+EXAMPLESDEST1=super_resolution_images1
+CONVERT_CMD1="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST1)/\`basename {} .nef\`.ppm"
 
-# These must be done manually
-# RGB_AHD_CMD1_4x4="convert -crop 268x178 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST1_4x4)/\`basename {} .16bit.ppm\`.ppm"
+EXAMPLESSRC2=$(WEB)/images2/*.16bit.ppm
+EXAMPLESDEST2=super_resolution_images2
+CONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST2)/\`basename {} .16bit.ppm\`.ppm"
 
 convert_examples:
-	mkdir -p $(EXAMPLESDEST1_2x2)
-	mkdir -p $(EXAMPLESDEST2_2x2)
-	mkdir -p $(EXAMPLESDEST2_4x4)
-	rm -f $(EXAMPLESDEST1_2x2)/*
-	rm -f $(EXAMPLESDEST2_2x2)/*
-	rm -f $(EXAMPLESDEST2_4x4)/*
-	find $(EXAMPLESSRC1) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD1_2x2)
-	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD2_2x2)
-	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(RGB_AHD_CMD2_4x4)
+	mkdir -p $(EXAMPLESDEST1)
+	rm -f $(EXAMPLESDEST1)/*
+	find $(EXAMPLESSRC1) | xargs -P12 -I{} sh -c $(CONVERT_CMD1)
+	mkdir -p $(EXAMPLESDEST2)
+	rm -f $(EXAMPLESDEST2)/*
+	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(CONVERT_CMD2)
 
 EXAMPLES2x2=super_resolution_examples_2x2
 EXAMPLES4x4=super_resolution_examples_4x4
@@ -87,25 +79,33 @@ clean_example_pages:
 	cp style.css $(EXAMPLES2x2)
 	cp style.css $(EXAMPLES4x4)
 
+clean_example_images:
+	mkdir -p $(EXAMPLES2x2)
+	mkdir -p $(EXAMPLES4x4)
+	rm -f $(EXAMPLES2x2)/*.png
+	rm -f $(EXAMPLES4x4)/*.png
+	rm -f $(EXAMPLES2x2)/*.ppm
+	rm -f $(EXAMPLES4x4)/*.ppm
+
 create_example_pages: clean_example_pages
-	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
-	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
 
 create_example_stats:
-	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
 
-create_example_images:
-	find $(EXAMPLESDEST1_2x2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST2_2x2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST1_4x4) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
-	find $(EXAMPLESDEST2_4x4) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
+create_example_images: clean_example_images
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
 
-create_examples: create_example_pages create_example_stats create_example_images
+create_examples: create_example_images create_example_pages create_example_stats
 
 clean:
 	rm -f file_sets.txt
