@@ -44,13 +44,18 @@ convert_bicubic () {
 	convert -gamma 2.2 -resize $400% -filter point $1 $2/$3.bicubic.png
 }
 
+convert_pr7 () {
+	convert -gamma 2.2 -resize $400% -filter point $1 $2/$3.pr7.png
+}
+
 convert_thumb () {
 	convert -gamma 2.2 -resize 42x28 $1 $2/$3.thumb.png
 }
 
-convert_input $img_fn $img_dir $img_bn $scale
-convert_biprior $img_fn $img_dir $img_bn $scale
-convert_bilinear $img_fn $img_dir $img_bn $scale
-convert_spline $img_fn $img_dir $img_bn $scale
-convert_bicubic $img_fn $img_dir $img_bn $scale
+convert_input $img_fn $img_dir $img_bn $scale "Input"
+convert_biprior $img_fn $img_dir $img_bn $scale "Biprior"
+convert_bilinear $img_fn $img_dir $img_bn $scale "Bilinear"
+convert_spline $img_fn $img_dir $img_bn $scale "Spline"
+convert_bicubic $img_fn $img_dir $img_bn $scale "Bicubic"
+convert_pr7 $img_fn $img_dir $img_bn $scale "Perfect Resize 7.0"
 convert_thumb $img_fn $img_dir $img_bn

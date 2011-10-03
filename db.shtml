@@ -15,13 +15,15 @@ natural images.  Journal of Vision (in press).
 <p><h2>Image Collection</h2>
 <table>
 <tr><td>Total images</td><td>1204</td></tr>
-<tr><td>Capture device</td><td>Nikon D700 Digital SLR</td></tr>
-<tr><td>Lens</td><td>Sigma 50mm 1:2.8 DG Macro</td></tr>
+<tr><td>Capture device</td><td><a href="http://en.wikipedia.org/wiki/Nikon_D700">Nikon D700 Digital SLR</a></td></tr>
+<tr><td>Lens</td><td><a href="http://en.wikipedia.org/wiki/Sigma_Corporation">Sigma</a> 50mm 1:2.8 DG Macro</td></tr>
 <tr><td>Pixel format</td><td>14 bits per channel RGB</td></tr>
 <tr><td>Image resolution</td><td>4284 x 2844</td></tr>
-<tr><td>Exposure index</td><td>ISO 200</td></tr>
-<tr><td>Sensor type</td><td>FX-format 23.9x36mm CMOS</td></tr>
-<tr><td>Location</td><td>Austin, Texas, USA and surrounding areas</td></tr>
+<tr><td><a href="http://en.wikipedia.org/wiki/Exposure_index#Digital_camera_ISO_speed_and_exposure_index">Exposure index</a></td><td>ISO 200</td></tr>
+<tr><td>Sensor type</td><td><a
+href="http://en.wikipedia.org/wiki/Full-frame_digital_SLR">FX-format 23.9x36mm</a> <a href="http://en.wikipedia.org/wiki/CMOS_sensor">CMOS</a></td></tr>
+<tr><td>Location</td><td><a
+href="http://maps.google.com/maps?q=austin,+texas">Austin, Texas, USA</a> and surrounding areas</td></tr>
 </table>
 <br>
 <h2>Calibration</h2>
@@ -80,60 +82,60 @@ Total disk space required for the database is 82GB.
 Note that the thumbnail images below have been gamma corrected and their dynamic
 range has been adjusted so that they are easier to view on an 8-bit per channel
 monitor.  The 16-bit images contained in the archives are not gamma corrected
-and have not been adjusted in this way.
+and their dynamic ranges have not been adjusted.
 <h3>
 Set 1
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100428.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100428.ppm.zip"><img src="cps20100428.montage.png"></a>
 <h3>
 Set 2
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100429.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100429.ppm.zip"><img src="cps20100429.montage.png"></a>
 <h3>
 Set 3
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100430.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100430.ppm.zip"><img src="cps20100430.montage.png"></a>
 <h3>
 Set 4
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100502.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100502.ppm.zip"><img src="cps20100502.montage.png"></a>
 <h3>
 Set 5
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100503.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100503.ppm.zip"><img src="cps20100503.montage.png"></a>
 <h3>
 Set 6
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100511.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100511.ppm.zip"><img src="cps20100511.montage.png"></a>
 <h3>
 Set 7
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100513.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20100513.ppm.zip"><img src="cps20100513.montage.png"></a>
 <h3>
 Set 8
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101008.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101008.ppm.zip"><img src="cps20101008.montage.png"></a>
 <h3>
 Set 9
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101012.exif.zip">[metadata]</a>
 </h3>
-<a class="imglink"
+<a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/point_prediction/cps20101012.ppm.zip"><img src="cps20101012.montage.png"></a>
 
 </div>

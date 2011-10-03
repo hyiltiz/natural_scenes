@@ -26,15 +26,39 @@ html_fn=$2
 img_dir=$3
 
 make_link () {
-	echo "<a href=\"$1\" title=\"Upsampling method comparison\"><img src=\"$2/$3.thumb.png\"></a>" >> $4
+	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.png\"></a>" >> $4
 }
 
 make_page () {
 	echo "<!--#include virtual=\"../open_example.shtml\" -->" > $1
-	echo "<img src=\"$2.input.png\">" >> $1
+	echo "<div class=\"example_menu\">" >> $1
 	echo "<br>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"../examples.shtml\">Back to Examples</a>" >> $1
+	echo "<br>" >> $1
+	echo "<br>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.compare.shtml\">Input</a>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.biprior.shtml\">Biprior</a>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.bilinear.shtml\">Bilinear</a>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.spline.shtml\">Spline</a>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.bicubic.shtml\">Bicubic</a>" >> $1
+	echo "<a class=\"example_menu_item\" href=\"$2.pr7.shtml\">Perfect Resize 7.0</a>" >> $1
+	echo "<br>" >> $1
+	echo "</div>" >> $1
+	echo "<div class=\"example_stats\">" >> $1
+	echo "<!--#include virtual=\"$2.$3.stats.shtml\" -->" >> $1
+	echo "</div>" >> $1
+	echo "<div class=\"example_image\">" >> $1
+	echo "<img src=\"$2.$3.png\">" >> $1
+	echo "</div>" >> $1
+	echo "<!--#include virtual=\"../footer.shtml\" -->" >> $1
 	echo "<!--#include virtual=\"../close.shtml\" -->" >> $1
 }
 
 make_link $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
-make_page $img_dir/$img_bn.compare.shtml $img_bn
+
+make_page $img_dir/$img_bn.compare.shtml $img_bn input
+make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior
+make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear
+make_page $img_dir/$img_bn.spline.shtml $img_bn spline
+make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic
+make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7
