@@ -25,7 +25,7 @@ scale=$3
 
 convert_original () {
 	convert -gamma 2.2 $1 $2/$3.original.png
-	convert -gamma 1.0 $1 $2/$3.original.ppm
+	convert -gamma 2.2 $1 $2/$3.original.ppm
 }
 
 convert_downsampled () {
@@ -50,13 +50,13 @@ convert_downsampled_odd () {
 	case $1 in
 	2)
 	$bin/gaussian_blur 3 0.85 2 < $2/$3.original.ppm > $2/$3.downsampled.odd.ppm
-	convert -gamma 2.2 $2/$3.downsampled.odd.ppm $2/$3.downsampled.odd.png
+	convert $2/$3.downsampled.odd.ppm $2/$3.downsampled.odd.png
 	;;
 	4)
 	tmp=`mktemp`
 	$bin/gaussian_blur 3 0.85 2 < $2/$3.original.ppm > $tmp
 	$bin/gaussian_blur 3 0.85 2 < $tmp > $2/$3.downsampled.odd.ppm
-	convert -gamma 2.2 $2/$3.downsampled.odd.ppm $2/$3.downsampled.odd.png
+	convert $2/$3.downsampled.odd.ppm $2/$3.downsampled.odd.png
 	;;
 	*)
 	echo "unknown scale"
@@ -76,13 +76,13 @@ convert_biprior () {
 	case $1 in
 	2)
 	$bin2/upsample2x2yuv $bin2/2x2yuv.lut < $2/$3.downsampled.odd.ppm > $2/$3.biprior.ppm
-	convert -gamma 2.2 $2/$3.biprior.ppm $2/$3.biprior.png
+	convert $2/$3.biprior.ppm $2/$3.biprior.png
 	;;
 	4)
 	tmp=`mktemp`
 	$bin2/upsample2x2yuv $bin2/2x2yuv.lut < $2/$3.downsampled.odd.ppm > $tmp
 	$bin2/upsample2x2yuv $bin2/2x2yuv.lut < $tmp > $2/$3.biprior.ppm
-	convert -gamma 2.2 $2/$3.biprior.ppm $2/$3.biprior.png
+	convert $2/$3.biprior.ppm $2/$3.biprior.png
 	;;
 	*)
 	echo "unknown scale"
