@@ -7,13 +7,15 @@
 <p>
 To compare upsampling methods, select a thumbnail below.
 <h3>General Images 4x Upsampling</h3>
+<!--#include virtual="sr2_4x4.shtml" -->
+<h3>Natural Images 4x Upsampling</h3>
 <!--#include virtual="sr1_4x4.shtml" -->
 <h3>General Images 2x Upsampling</h3>
-<!--#include virtual="sr1_2x2.shtml" -->
-<h3>Natural Images 4x Upsampling</h3>
-<!--#include virtual="sr2_4x4.shtml" -->
-<h3>Natural Images 2x Upsampling</h3>
 <!--#include virtual="sr2_2x2.shtml" -->
+<h3>Natural Images 2x Upsampling</h3>
+<!--#include virtual="sr1_2x2.shtml" -->
+<h3>Other Images 4x Upsampling (without references)</h3>
+<!--#include virtual="sr3_4x4.shtml" -->
 
 </div>
 

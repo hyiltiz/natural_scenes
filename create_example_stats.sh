@@ -21,17 +21,34 @@ img_dir=$2
 bin=~/projects/point_prediction
 
 output () {
-	echo "<ul>" > $1
-	echo "<li>" >> $1
-	echo "input: `identify $2 | cut -f3 -d' '`" >> $1
-	echo "</li>" >> $1
-	echo "<li>" >> $1
-	echo "output: `identify $3 | cut -f3 -d' '`" >> $1
-	echo "</li>" >> $1
-	echo "<li>" >> $1
-	echo "mse: $4" >> $1
-	echo "</li>" >> $1
-	echo "</ul>" >> $1
+	echo "<div class=\"example_stats\">" > $1
+	echo "<table>" >> $1
+	echo "<tr>" >> $1
+	echo "<td>" >> $1
+	echo "input" >> $1
+	echo "</td>" >> $1
+	echo "<td>" >> $1
+	echo "`identify $2 | cut -f3 -d' '`" >> $1
+	echo "</td>" >> $1
+	echo "</tr>" >> $1
+	echo "<tr>" >> $1
+	echo "<td>" >> $1
+	echo "output" >> $1
+	echo "</td>" >> $1
+	echo "<td>" >> $1
+	echo "`identify $3 | cut -f3 -d' '`" >> $1
+	echo "</td>" >> $1
+	echo "</tr>" >> $1
+	echo "<tr>" >> $1
+	echo "<td>" >> $1
+	echo "mse" >> $1
+	echo "</td>" >> $1
+	echo "<td>" >> $1
+	echo "$4" >> $1
+	echo "</td>" >> $1
+	echo "</tr>" >> $1
+	echo "</table>" >> $1
+	echo "</div>" >> $1
 }
 
 output $2/$img_bn.input.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm "---"

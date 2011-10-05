@@ -60,9 +60,7 @@ make_page () {
 	echo "</li>" >> $1
 	echo "</ul>" >> $1
 	echo "</div>" >> $1
-	echo "<div class=\"example_stats\">" >> $1
 	echo "<!--#include virtual=\"$2.$3.stats.shtml\" -->" >> $1
-	echo "</div>" >> $1
 	echo "<!--#include virtual=\"../footer.shtml\" -->" >> $1
 	echo "<!--#include virtual=\"../close.shtml\" -->" >> $1
 }

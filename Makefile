@@ -7,7 +7,7 @@
 SRC=/media/sunbright/nikond700db/original
 DEST=/var/local/point_prediction/nikond700db/srgb_ahd_16bit
 
-all: create_example_pages
+all: convert_examples create_examples
 
 convert_ppm:
 	@mkdir -p $(DEST)
@@ -52,9 +52,9 @@ EXAMPLESSRC1=$(WEB)/images1/*.nef
 EXAMPLESDEST1=super_resolution_images1
 CONVERT_CMD1="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST1)/\`basename {} .nef\`.ppm"
 
-EXAMPLESSRC2=$(WEB)/images2/*.16bit.ppm
+EXAMPLESSRC2=$(WEB)/images2/*.cropped.ppm
 EXAMPLESDEST2=super_resolution_images2
-CONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST2)/\`basename {} .16bit.ppm\`.ppm"
+CONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST2)/\`basename {} .cropped.ppm\`.ppm"
 
 convert_examples:
 	mkdir -p $(EXAMPLESDEST1)
@@ -66,6 +66,20 @@ convert_examples:
 
 EXAMPLES2x2=super_resolution_examples_2x2
 EXAMPLES4x4=super_resolution_examples_4x4
+
+clean_example_images:
+	mkdir -p $(EXAMPLES2x2)
+	mkdir -p $(EXAMPLES4x4)
+	rm -f $(EXAMPLES2x2)/*.png
+	rm -f $(EXAMPLES4x4)/*.png
+	rm -f $(EXAMPLES2x2)/*.ppm
+	rm -f $(EXAMPLES4x4)/*.ppm
+
+create_example_images:
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
 
 clean_example_pages:
 	mkdir -p $(EXAMPLES2x2)
@@ -79,14 +93,6 @@ clean_example_pages:
 	cp style.css $(EXAMPLES2x2)
 	cp style.css $(EXAMPLES4x4)
 
-clean_example_images:
-	mkdir -p $(EXAMPLES2x2)
-	mkdir -p $(EXAMPLES4x4)
-	rm -f $(EXAMPLES2x2)/*.png
-	rm -f $(EXAMPLES4x4)/*.png
-	rm -f $(EXAMPLES2x2)/*.ppm
-	rm -f $(EXAMPLES4x4)/*.ppm
-
 create_example_pages: clean_example_pages
 	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
@@ -94,18 +100,12 @@ create_example_pages: clean_example_pages
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
 
 create_example_stats:
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
 
-create_example_images: clean_example_images
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
-
-create_examples: create_example_images create_example_pages create_example_stats
+create_examples: clean_example_images create_example_images create_example_pages create_example_stats
 
 clean:
 	rm -f file_sets.txt
