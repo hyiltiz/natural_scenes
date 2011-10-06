@@ -73,14 +73,6 @@ convert_examples:
 EXAMPLES2x2=super_resolution_examples_2x2
 EXAMPLES4x4=super_resolution_examples_4x4
 
-clean_example_images:
-	mkdir -p $(EXAMPLES2x2)
-	mkdir -p $(EXAMPLES4x4)
-	rm -f $(EXAMPLES2x2)/*.png
-	rm -f $(EXAMPLES4x4)/*.png
-	rm -f $(EXAMPLES2x2)/*.ppm
-	rm -f $(EXAMPLES4x4)/*.ppm
-
 create_example_images:
 	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
@@ -102,19 +94,42 @@ clean_example_pages:
 	cp style.css $(EXAMPLES4x4)
 
 create_example_pages: clean_example_pages
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2)
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4)
-	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -I{} ./create_example_pages_noref.sh {} sr3_4x4.shtml $(EXAMPLES4x4)
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2) "2x Super-resolution"
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2) "2x Super-resolution"
+	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
+	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
+	find $(EXAMPLESDEST3) -name "*.ppm" | sort -h | xargs -I{} ./create_example_pages_noref.sh {} sr3_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
+
+# get files onto wsglab for conversion
+#
+# you have to convert the pr7 files before you can generate stats
+pr7_upload:
+	mkdir -p /mnt/wsglab/Users/Perry/tmp
+	mkdir -p /mnt/wsglab/Users/Perry/tmp/2x2
+	mkdir -p /mnt/wsglab/Users/Perry/tmp/4x4
+	cp -v super_resolution_examples_2x2/*.downsampled.png /mnt/wsglab/Users/Perry/tmp/2x2
+	cp -v super_resolution_examples_4x4/*.downsampled.png /mnt/wsglab/Users/Perry/tmp/4x4
+	ls /mnt/wsglab/Users/Perry/tmp/2x2/*.downsampled.png | wc
+	ls /mnt/wsglab/Users/Perry/tmp/4x4/*.downsampled.png | wc
+
+# get converted files from wsglab
+pr7_download:
+	cp /mnt/wsglab/Users/Perry/tmp/2x2/*.pr7.png super_resolution_examples_2x2
+	cp /mnt/wsglab/Users/Perry/tmp/4x4/*.pr7.png super_resolution_examples_4x4
+	rename .downsampled.pr7 .pr7 super_resolution_examples_2x2/*.pr7.png
+	rename .downsampled.pr7 .pr7 super_resolution_examples_4x4/*.pr7.png
+	chmod -x super_resolution_examples_2x2/*.pr7.png
+	chmod -x super_resolution_examples_4x4/*.pr7.png
+	find super_resolution_examples_2x2/*.pr7.png | xargs -I{} convert {} {}.ppm
+	find super_resolution_examples_4x4/*.pr7.png | xargs -I{} convert {} {}.ppm
+	rename .png.ppm .ppm super_resolution_examples_2x2/*.pr7.png.ppm
+	rename .png.ppm .ppm super_resolution_examples_4x4/*.pr7.png.ppm
 
 create_example_stats:
 	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
 	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
-
-create_examples: clean_example_images create_example_images create_example_pages create_example_stats
 
 publish:
 	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/point_prediction/

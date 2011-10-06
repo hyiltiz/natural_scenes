@@ -20,10 +20,16 @@ if [ "$3" = "" ]; then
 	exit -1
 fi
 
+if [ "$4" = "" ]; then
+	echo "no title given"
+	exit -1
+fi
+
 img_fn=$1
 img_bn=$(basename $1 .ppm)
 html_fn=$2
 img_dir=$3
+title=$4
 
 make_link () {
 	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.png\"></a>" >> $4
@@ -33,6 +39,11 @@ make_page () {
 	echo "<!--#include virtual=\"../open_example.shtml\" -->" > $1
 	echo "<div class=\"example_image\">" >> $1
 	echo "<img src=\"$2.$3.png\">" >> $1
+	echo "</div>" >> $1
+	echo "<div class=\"example_title\">" >> $1
+	echo "<h3>" >> $1
+	echo "$4" >> $1
+	echo "</h3>" >> $1
 	echo "</div>" >> $1
 	echo "<div class=\"example_menu\">" >> $1
 	echo "<a href=\"../examples.shtml\">Back to Examples</a>" >> $1
@@ -67,10 +78,10 @@ make_page () {
 
 make_link $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
 
-make_page $img_dir/$img_bn.compare.shtml $img_bn input
-make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior
-make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear
-make_page $img_dir/$img_bn.spline.shtml $img_bn spline
-make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic
-make_page $img_dir/$img_bn.lanczos.shtml $img_bn lanczos
-make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7
+make_page $img_dir/$img_bn.compare.shtml $img_bn input "$title"
+make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior "$title"
+make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear "$title"
+make_page $img_dir/$img_bn.spline.shtml $img_bn spline "$title"
+make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic "$title"
+make_page $img_dir/$img_bn.lanczos.shtml $img_bn lanczos "$title"
+make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7 "$title"

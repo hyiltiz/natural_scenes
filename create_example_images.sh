@@ -111,11 +111,6 @@ convert_lanczos () {
 	convert -resize $1% -filter lanczos $2/$3.downsampled.ppm $2/$3.lanczos.ppm
 }
 
-convert_pr7 () {
-	convert -resize $1% -filter point $2/$3.downsampled.png $2/$3.pr7.png
-	convert -resize $1% -filter point $2/$3.downsampled.ppm $2/$3.pr7.ppm
-}
-
 convert_thumb () {
 	convert -resize 42x28 $1/$2.original.png $1/$2.thumb.png
 	convert -resize 42x28 $1/$2.original.ppm $1/$2.thumb.ppm
@@ -130,5 +125,4 @@ convert_bilinear $((100*$scale)) $img_dir $img_bn
 convert_spline $((100*$scale)) $img_dir $img_bn
 convert_bicubic $((100*$scale)) $img_dir $img_bn
 convert_lanczos $((100*$scale)) $img_dir $img_bn
-convert_pr7 $((100*$scale)) $img_dir $img_bn
 convert_thumb $img_dir $img_bn
