@@ -80,6 +80,12 @@ create_example_images:
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
 	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_images_noref.sh {} $(EXAMPLES4x4) 4
 
+get_other_4x4_images:
+	cp $(WEB)/images3/*.fattal.png $(EXAMPLES4x4)
+	cp $(WEB)/images3/*.glasner.png $(EXAMPLES4x4)
+	find $(WEB)/images3/*.fattal.png | xargs --verbose -I{} sh -c "convert {} $(EXAMPLES4x4)/\`basename {} .png\`.ppm"
+	find $(WEB)/images3/*.glasner.png | xargs --verbose -I{} sh -c "convert {} $(EXAMPLES4x4)/\`basename {} .png\`.ppm"
+
 clean_example_pages:
 	mkdir -p $(EXAMPLES2x2)
 	mkdir -p $(EXAMPLES4x4)
