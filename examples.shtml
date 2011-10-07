@@ -6,10 +6,9 @@
 <p>
 <h2>Super-Resolution Examples</h2>
 <p>
-In the following examples, the input images were obtained by first blurring and
-then downsampling the original images.  These downsampled images were then
-upsampled with various super-resolution methods and the results are displayed
-and mean squared errors are reported.
+In the following examples, the input images were obtained by blurring and
+downsampling the original images.  These downsampled images were then
+upsampled with various super-resolution methods.
 <p>
 <h3>General Images 4x Super-resolution</h3>
 <!--#include virtual="sr2_4x4.shtml" -->
@@ -22,16 +21,15 @@ and mean squared errors are reported.
 <p>
 <h2>Super-Resolution Examples (Qualitative)</h2>
 <p>
-In the following examples, the original image was used as input, so there exists
-no reference against which to measure error.  Therefore, the results are
-displayed, but mean squared error is not reported.
+In the following examples, the original images were used as input, so there exists
+no references against which to measure error.
 <p>
 <h3>General Images 4x Super-resolution</h3>
 <!--#include virtual="sr3_4x4.shtml" -->
 <p>
-<h2>Super-Resolution Examples Notes</h2>
+<h2>Notes</h2>
 <p>
-The Gaussian kernel used to blur the images in the first example set had a
+The Gaussian kernel used to blur the images in the first group of examples had a
 standard deviation of 0.85 or 1.7 pixels and a support size of 1.5, 2.0, 3.5, or
 4.0 pixels, depending on the downsampling scale and depending upon whether even-
 or odd-kernel downsampling was applied.
