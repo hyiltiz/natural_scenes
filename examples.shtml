@@ -42,6 +42,13 @@ href="http://www.ononesoftware.com/products/suite/perfect-resize/?ind">Perfect
 Resize 7.0</a> is a commercial image resizing application, previously known as
 Genuine Fractals.
 
+<p>
+The images in the second group of examples were obtained from
+<a href="http://www.wisdom.weizmann.ac.il/~vision/SingleImageSR.html">
+The Weizmann Institute of Science
+Faculty of Mathematics and Computer Science
+Computer Vision Lab</a>.
+
 </div>
 
 <!--#include virtual="menu.shtml" -->
