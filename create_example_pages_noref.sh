@@ -69,18 +69,38 @@ make_page () {
 	echo "<li>" >> $1
 	echo "<a href=\"$2.pr7.shtml\">Perfect Resize 7.0</a>" >> $1
 	echo "</li>" >> $1
+	if [ "$5" == "yes" ]
+	then
+		echo "<li>" >> $1
+		echo "<a href=\"$2.fattal.shtml\">Fattal</a>" >> $1
+		echo "</li>" >> $1
+		echo "<li>" >> $1
+		echo "<a href=\"$2.glasner.shtml\">Glasner</a>" >> $1
+		echo "</li>" >> $1
+	fi
 	echo "</ul>" >> $1
 	echo "</div>" >> $1
+	echo "<!--#include virtual=\"$2.$3.stats.shtml\" -->" >> $1
 	echo "<!--#include virtual=\"../footer.shtml\" -->" >> $1
 	echo "<!--#include virtual=\"../close.shtml\" -->" >> $1
 }
 
 make_link $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
 
-make_page $img_dir/$img_bn.compare.shtml $img_bn input "$title"
-make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior "$title"
-make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear "$title"
-make_page $img_dir/$img_bn.spline.shtml $img_bn spline "$title"
-make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic "$title"
-make_page $img_dir/$img_bn.lanczos.shtml $img_bn lanczos "$title"
-make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7 "$title"
+if [ -e $img_dir/$img_bn.fattal.ppm ]
+then
+	extra_pages=yes
+fi
+make_page $img_dir/$img_bn.compare.shtml $img_bn input "$title" $extra_pages
+make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior "$title" $extra_pages
+make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear "$title" $extra_pages
+make_page $img_dir/$img_bn.spline.shtml $img_bn spline "$title" $extra_pages
+make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic "$title" $extra_pages
+make_page $img_dir/$img_bn.lanczos.shtml $img_bn lanczos "$title" $extra_pages
+make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7 "$title" $extra_pages
+
+if [ "$extra_pages" == "yes" ]
+then
+	make_page $img_dir/$img_bn.fattal.shtml $img_bn fattal "$title" $extra_pages
+	make_page $img_dir/$img_bn.glasner.shtml $img_bn glasner "$title" $extra_pages
+fi

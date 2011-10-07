@@ -136,6 +136,7 @@ create_example_stats:
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
 	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
 	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
+	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats_noref.sh {} $(EXAMPLES4x4)
 
 publish:
 	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/point_prediction/

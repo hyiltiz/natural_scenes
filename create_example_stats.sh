@@ -59,10 +59,15 @@ output () {
 	echo "</div>" >> $1
 }
 
-output $2/$img_bn.input.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm "---" "---"
-output $2/$img_bn.biprior.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.biprior.ppm` "Biprior"
-output $2/$img_bn.bilinear.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.bilinear.ppm` "Bilinear"
-output $2/$img_bn.spline.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm   `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.spline.ppm` "Spline"
-output $2/$img_bn.bicubic.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.bicubic.ppm` "Bicubic"
-output $2/$img_bn.lanczos.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.lanczos.ppm` "Lanczos"
-output $2/$img_bn.pr7.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm      `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.pr7.ppm` "PR7"
+output $img_dir/$img_bn.input.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm "---" "---"
+output $img_dir/$img_bn.biprior.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.biprior.ppm` "Biprior"
+output $img_dir/$img_bn.bilinear.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.bilinear.ppm` "Bilinear"
+output $img_dir/$img_bn.spline.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm   `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.spline.ppm` "Spline"
+output $img_dir/$img_bn.bicubic.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.bicubic.ppm` "Bicubic"
+output $img_dir/$img_bn.lanczos.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm  `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.lanczos.ppm` "Lanczos"
+output $img_dir/$img_bn.pr7.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm      `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.pr7.ppm` "PR7"
+
+if [ -e $img_dir/$image_bn.fattal.ppm ]
+then
+	output $img_dir/$img_bn.fattal.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.original.ppm      `$bin/mse $img_dir/$img_bn.original.ppm $img_dir/$img_bn.fattal.ppm` "Fattal"
+fi
