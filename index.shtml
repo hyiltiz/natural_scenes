@@ -5,18 +5,19 @@
 
 <p>
 <h2>Introduction</h2>
-This site contains information relating to point prediction in natural images.
+This site contains information relating to the statistical properties of natural
+scenes.
 <h2>Publications</h2>
-<div class="citation">
-<a href="GeislerPerry-IAO-2011.pdf">
-Geisler WS & Perry JS (2011) High order statistics for point prediction in
-natural images.  In Imaging Systems, OSA technical Digest (CD), Optical Society of America. (in press)
-</a>
-</div>
 <div class="citation">
 <a href="Geisler-Perry-JOV-final.pdf">
 Geisler WS & Perry JS (2011) Statistics for optimal point prediction in
 natural images.  Journal of Vision (in press).
+</a>
+</div>
+<div class="citation">
+<a href="GeislerPerry-IAO-2011.pdf">
+Geisler WS & Perry JS (2011) High order statistics for point prediction in
+natural images.  In Imaging Systems, OSA technical Digest (CD), Optical Society of America. (in press)
 </a>
 </div>
 

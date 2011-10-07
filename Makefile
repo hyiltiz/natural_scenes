@@ -36,8 +36,8 @@ ppmzips: file_sets
 	@ls -1 $(DB)/*.ppm.zip
 
 copytocvis:
-	@cp -v $(DB)/*.zip /mnt/cvis/point_prediction
-	@touch /mnt/cvis/point_prediction/*.zip
+	@cp -v $(DB)/*.zip /mnt/cvis/natural_scenes
+	@touch /mnt/cvis/natural_scenes/*.zip
 
 THUMBS_DEST=/var/local/point_prediction/nikond700db/thumbs
 
@@ -139,7 +139,7 @@ create_example_stats:
 	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats_noref.sh {} $(EXAMPLES4x4)
 
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/point_prediction/
+	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
 
 clean:
 	rm -f file_sets.txt

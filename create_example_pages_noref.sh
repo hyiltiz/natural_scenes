@@ -46,7 +46,7 @@ make_page () {
 	echo "</h3>" >> $1
 	echo "</div>" >> $1
 	echo "<div class=\"example_menu\">" >> $1
-	echo "<a href=\"../examples.shtml\">Back to Examples</a>" >> $1
+	echo "<a href=\"../applications.shtml\">Previous Page</a>" >> $1
 	echo "<ul>" >> $1
 	echo "<li>" >> $1
 	echo "<a href=\"$2.compare.shtml\">Input</a>" >> $1
