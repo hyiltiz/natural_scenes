@@ -5,16 +5,23 @@
 
 <p><h2>Database Usage</h2>
 This database may be used for research and non-commercial purposes.
-Please cite the following article in any published work that is based on these data:
+Please cite the following articles in any published work that is based on these data:
 <div class="citation">
+<h3>Scene Collection #1</h3>
 <a href="Geisler-Perry-JOV-final.pdf">
 Geisler WS & Perry JS (2011) Statistics for optimal point prediction in
 natural images.  Journal of Vision (in press).
 </a>
 </div>
-<p><h2>Image Collection</h2>
+<div class="citation">
+<h3>Scene Collection #2</h3>
+<a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_PNAS_2011.pdf">
+Burge J, Geisler WS (2011). Optimal defocus estimation in individual natural
+images. Proceedings of the National Academy of Sciences, 108 (40): 16849-16854
+</a>
+</div>
+<p><h2>Image Capture</h2>
 <table>
-<tr><td>Total images</td><td>1204</td></tr>
 <tr><td>Capture device</td><td><a href="http://en.wikipedia.org/wiki/Nikon_D700">Nikon D700 Digital SLR</a></td></tr>
 <tr><td>Lens</td><td><a href="http://en.wikipedia.org/wiki/Sigma_Corporation">Sigma</a> 50mm 1:2.8 DG Macro</td></tr>
 <tr><td>Pixel format</td><td>14 bits per channel RGB</td></tr>
@@ -22,16 +29,12 @@ natural images.  Journal of Vision (in press).
 <tr><td>Exposure index</td><td>ISO 200</td></tr>
 <tr><td>Sensor type</td><td><a
 href="http://en.wikipedia.org/wiki/Full-frame_digital_SLR">FX-format 23.9x36mm</a> <a href="http://en.wikipedia.org/wiki/CMOS_sensor">CMOS</a></td></tr>
-<tr><td>Location</td><td><a
-href="http://maps.google.com/maps?q=austin,+texas">Austin, Texas, USA</a> and surrounding areas</td></tr>
 </table>
 <br>
-<h2>Calibration</h2>
+<h2>Camera Calibration</h2>
 <a class="plot" href="pixel_sensitivities.txt"><img src="rgb_pixel_responses_plot.png"
 width=180 height=150 align=top></a>
-The Nikon D700 camera was calibrated by <a
-href="http://jburge.cps.utexas.edu">Johannes Burge</a>.
-<p>You may use the resulting pixel sensitivity functions to convert the image
+<p>The following pixel sensitivity functions may be used to convert the image
 RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
 <div id="clear"> </div>
 <!--
@@ -60,8 +63,8 @@ need to rescale the cone responses using the aperture and shutter speed
 settings provided in the exif files below.
 -->
 
-<h2>Image Sets</h2>
-The database consists of nine image sets and nine corresponding metadata
+<h2>Scene Collections</h2>
+Each scene collection consists of image sets and corresponding metadata
 sets, each archived into a
 <a href = "http://en.wikipedia.org/wiki/ZIP_(file_format)">ZIP format</a>
 file.
@@ -77,12 +80,18 @@ data and time, GPS coordinates, and other
 <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">Exif file format</a>
 information.
 <p>
-Total disk space required for the database is 82GB.
-<p>
 Note that the thumbnail images below have been gamma corrected and their dynamic
 range has been adjusted so that they are easier to view on an 8-bit per channel
 monitor.  The 16-bit images contained in the archives are not gamma corrected
 and their dynamic ranges have not been adjusted.
+<h2>Scene Collection #1</h2>
+<table>
+<tr><td>Scene type</td><td>Natural scenes with no man-made objects</td></tr>
+<tr><td>Location</td><td><a
+href="http://maps.google.com/maps?q=austin,+texas">Austin, Texas, USA</a> and surrounding areas</td></tr>
+<tr><td>Total images</td><td>1204</td></tr>
+<tr><td>Disk space requirements</td><td>82GB</td></tr>
+</table>
 <h3>
 Set 1
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100428.exif.zip">[metadata]</a>
@@ -138,6 +147,17 @@ Set 9
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101012.ppm.zip"><img src="cps20101012.montage.png"></a>
 
+<h2>Scene Collection #2</h2>
+<table>
+<tr><td>Scene type</td><td>Natural scenes with man-made objects</td></tr>
+<tr><td>Location</td><td><a
+href="http://maps.google.com/maps?q=university+of+texas&hl=en&sll=30.285026,-97.733523&sspn=0.044544,0.093513&vpsrc=0&hq=university+of+texas&t=h&z=15">
+The University of Texas at Austin</a></td></tr>
+<tr><td>Total images</td><td>XXX</td></tr>
+<tr><td>Disk space requirements</td><td>XXXGB</td></tr>
+</table>
+<h3>
+Set 1
 </div>
 
 <!--#include virtual="menu.shtml" -->

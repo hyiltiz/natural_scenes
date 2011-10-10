@@ -140,6 +140,8 @@ create_example_stats:
 
 publish:
 	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
+	# this html code contains a different statcounter id
+	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 
 clean:
 	rm -f file_sets.txt
