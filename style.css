@@ -106,8 +106,11 @@
 .plot:hover {
 	opacity: 0.5;
 }
-.citation {
-	margin: 20px 30px 20px 30px;
+.citation1 {
+	margin: 0px 30px 20px 0px;
+}
+.citation2 {
+	margin: 0px 30px 20px 30px;
 }
 body {
 	font-family: "Verdana", Verdana, sans-serif;
@@ -129,6 +132,7 @@ h1 {
 	float: left;
 }
 h2 {
+	padding: 10px 0px 0px 0px;
 	font-size: 100%;
 }
 h3 {
