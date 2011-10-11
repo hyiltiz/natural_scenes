@@ -7,14 +7,14 @@
 This database may be used for research and non-commercial purposes.
 Please cite the following articles in any published work that is based on these data:
 <div class="citation">
-<h3>Scene Collection #1</h3>
+<h3>Nature Scene Collection</h3>
 <a href="Geisler-Perry-JOV-final.pdf">
-Geisler WS & Perry JS (2011) Statistics for optimal point prediction in
+Geisler WS & Perry JS (2011). Statistics for optimal point prediction in
 natural images.  Journal of Vision (in press).
 </a>
 </div>
 <div class="citation">
-<h3>Scene Collection #2</h3>
+<h3>Campus Scene Collection</h3>
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_PNAS_2011.pdf">
 Burge J, Geisler WS (2011). Optimal defocus estimation in individual natural
 images. Proceedings of the National Academy of Sciences, 108 (40): 16849-16854
@@ -84,9 +84,9 @@ Note that the thumbnail images below have been gamma corrected and their dynamic
 range has been adjusted so that they are easier to view on an 8-bit per channel
 monitor.  The 16-bit images contained in the archives are not gamma corrected
 and their dynamic ranges have not been adjusted.
-<h2>Scene Collection #1</h2>
+<h2>Nature Scene Collection</h2>
 <table>
-<tr><td>Scene type</td><td>Natural scenes with no man-made objects</td></tr>
+<tr><td>Content</td><td>Nature scenes containing no man-made objects or people</td></tr>
 <tr><td>Location</td><td><a
 href="http://maps.google.com/maps?q=austin,+texas">Austin, Texas, USA</a> and surrounding areas</td></tr>
 <tr><td>Total images</td><td>1204</td></tr>
@@ -147,9 +147,9 @@ Set 9
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101012.ppm.zip"><img src="cps20101012.montage.png"></a>
 
-<h2>Scene Collection #2</h2>
+<h2>Campus Scene Collection</h2>
 <table>
-<tr><td>Scene type</td><td>Natural scenes with man-made objects</td></tr>
+<tr><td>Content</td><td>University campus scenes containing cars, building, and people</td></tr>
 <tr><td>Location</td><td><a
 href="http://maps.google.com/maps?q=university+of+texas&hl=en&sll=30.285026,-97.733523&sspn=0.044544,0.093513&vpsrc=0&hq=university+of+texas&t=h&z=15">
 The University of Texas at Austin</a></td></tr>
