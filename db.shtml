@@ -160,11 +160,15 @@ href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101
 <tr><td>Location</td><td><a
 href="http://maps.google.com/maps?q=university+of+texas&hl=en&sll=30.285026,-97.733523&sspn=0.044544,0.093513&vpsrc=0&hq=university+of+texas&t=h&z=15">
 The University of Texas at Austin</a></td></tr>
-<tr><td>Total images</td><td>XXX</td></tr>
-<tr><td>Disk space requirements</td><td>XXXGB</td></tr>
+<tr><td>Total images</td><td>90</td></tr>
+<tr><td>Disk space requirements</td><td>6GB</td></tr>
 </table>
 <h3>
 Set 1
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps2010-2011.exif.zip">[metadata]</a>
+</h3>
+<a class="image_link"
+href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps2010-2011.ppm.zip"><img src="cps2010-2011.montage.png"></a>
 </div>
 
 <!--#include virtual="menu.shtml" -->

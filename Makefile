@@ -21,7 +21,6 @@ file_sets:
 
 PPM_SRC=$(DEST)
 EXIF_SRC=/var/local/point_prediction/nikond700db/exif/
-JPEG_SRC=/var/local/point_prediction/nikond700db/jpeg/
 
 exifzips: file_sets
 	@mkdir -p $(DB)
@@ -47,6 +46,38 @@ thumbs: file_sets
 
 montages: file_sets
 	@cat file_sets.txt | xargs --verbose -P1 -I{} sh -c "montage -geometry 42x28+1+1 -tile 12x \`find $(THUMBS_DEST) -name '{}*.png'\` {}.montage.png"
+
+#############################################
+# support for Johannes' image set
+#############################################
+
+JBSRC=/media/sunbright/nikond700db/jb
+JBDEST=/var/local/point_prediction/nikond700db/jb_srgb_ahd_16bit
+
+convert_ppm_jb:
+	@mkdir -p $(JBDEST)
+	@find $(JBSRC) -name "*.nef" | xargs --verbose -P12 -I{} sh -c "dcraw -c -v -4 -o 1 -q 3 {} > $(JBDEST)/\`basename {} .nef\`.ppm"
+
+exifzips_jb:
+	find $(JBSRC) -name '*.exif' | zip -j -@ $(DB)/cps2010-2011.exif.zip
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.exif.zip
+
+ppmzips_jb:
+	find $(JBDEST) -name '*.ppm' | zip -j -@ $(DB)/cps2010-2011.ppm.zip
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.ppm.zip
+
+JBTHUMBS_DEST=/var/local/point_prediction/nikond700db/jb_thumbs
+
+thumbs_jb:
+	@mkdir -p $(JBTHUMBS_DEST)
+	@find $(JBDEST) -name "*.ppm" | xargs --verbose -P12 -I{} sh -c "convert -contrast-stretch 2%x1% -resize 42x28 -gamma 2.2 {} $(JBTHUMBS_DEST)/\`basename {} .ppm\`.thumb.png"
+
+montages_jb:
+	@montage -geometry 42x28+1+1 -tile 12x `find $(JBTHUMBS_DEST) -name '*.png'` cps2010-2011.montage.png
+
+#############################################
 
 EXAMPLESSRC1=$(WEB)/images1/*.nef
 EXAMPLESDEST1=super_resolution_images1
