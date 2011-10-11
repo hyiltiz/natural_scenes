@@ -88,7 +88,7 @@ range has been adjusted so that they are easier to view on an 8-bit per channel
 monitor.  The 16-bit images contained in the archives are not gamma corrected
 and their dynamic ranges have not been adjusted.
 <a name="nature_scene_collection">
-<h2>Nature Scene Collection</h2>
+<h3>Nature Scene Collection</h3>
 </a>
 <table>
 <tr><td>Content</td><td>Nature scenes containing no man-made objects or people</td></tr>
@@ -97,63 +97,63 @@ href="http://maps.google.com/maps?q=austin,+texas">Austin, Texas, USA</a> and su
 <tr><td>Total images</td><td>1204</td></tr>
 <tr><td>Disk space requirements</td><td>82GB</td></tr>
 </table>
-<h3>
+<h4>
 Set 1
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100428.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100428.ppm.zip"><img src="cps20100428.montage.png"></a>
-<h3>
+<h4>
 Set 2
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100429.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100429.ppm.zip"><img src="cps20100429.montage.png"></a>
-<h3>
+<h4>
 Set 3
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100430.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100430.ppm.zip"><img src="cps20100430.montage.png"></a>
-<h3>
+<h4>
 Set 4
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100502.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100502.ppm.zip"><img src="cps20100502.montage.png"></a>
-<h3>
+<h4>
 Set 5
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100503.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100503.ppm.zip"><img src="cps20100503.montage.png"></a>
-<h3>
+<h4>
 Set 6
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100511.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100511.ppm.zip"><img src="cps20100511.montage.png"></a>
-<h3>
+<h4>
 Set 7
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100513.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20100513.ppm.zip"><img src="cps20100513.montage.png"></a>
-<h3>
+<h4>
 Set 8
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101008.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101008.ppm.zip"><img src="cps20101008.montage.png"></a>
-<h3>
+<h4>
 Set 9
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101012.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps20101012.ppm.zip"><img src="cps20101012.montage.png"></a>
 
 <a name="campus_scene_collection">
-<h2>Campus Scene Collection</h2>
+<h3>Campus Scene Collection</h3>
 </a>
 <table>
 <tr><td>Content</td><td>University campus scenes containing cars, building, and people</td></tr>
@@ -163,10 +163,10 @@ The University of Texas at Austin</a></td></tr>
 <tr><td>Total images</td><td>90</td></tr>
 <tr><td>Disk space requirements</td><td>6GB</td></tr>
 </table>
-<h3>
+<h4>
 Set 1
 <a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps2010-2011.exif.zip">[metadata]</a>
-</h3>
+</h4>
 <a class="image_link"
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps2010-2011.ppm.zip"><img src="cps2010-2011.montage.png"></a>
 </div>
