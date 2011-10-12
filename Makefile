@@ -174,6 +174,9 @@ publish:
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 
+backup:
+	cp -av * /mnt/wsglab/Users/Perry/backups/natural_scenes
+
 clean:
 	rm -f file_sets.txt
 	rm -f *.montage.png
