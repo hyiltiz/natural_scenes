@@ -47,6 +47,9 @@
 .image_link {
 	border: 0px solid #000000;
 }
+.image_link:visited {
+	opacity: 0.8;
+}
 .image_link:hover {
 	opacity: 0.8;
 }
