@@ -1,3 +1,9 @@
+[Please note that it has been brought to our attention that these pixel
+sensitivity functions should not have flat regions.  We are in the process of
+recalibrating the camera with desaturated radiants in order to allow the
+sensitivities to drop below zero.  We will post the results when they are
+complete.]
+
 394 0.0112 0.0021 0.0118
 399 0.0121 0.0015 0.0155
 404 0.0120 0.0006 0.0213
