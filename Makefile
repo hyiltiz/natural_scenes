@@ -34,18 +34,6 @@ ppmzips: file_sets
 	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
 	@ls -1 $(DB)/*.ppm.zip
 
-exiftars: file_sets
-	@mkdir -p $(DB)
-	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar -czvf $(DB)/{}.exif.tgz \`find $(EXIF_SRC) -name '{}*.exif'\`"
-	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
-	@ls -1 $(DB)/*.exif.tgz
-
-ppmtars: file_sets
-	@mkdir -p $(DB)
-	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar -czvf $(DB)/{}.ppm.tgz \`find $(PPM_SRC) -name '{}*.ppm'\`"
-	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
-	@ls -1 $(DB)/*.ppm.tgz
-
 copytocvis:
 	@cp -v $(DB)/*.zip /mnt/cvis/natural_scenes
 	@touch /mnt/cvis/natural_scenes/*.zip
