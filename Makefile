@@ -34,6 +34,18 @@ ppmzips: file_sets
 	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
 	@ls -1 $(DB)/*.ppm.zip
 
+exiftars: file_sets
+	@mkdir -p $(DB)
+	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar -czvf $(DB)/{}.exif.tgz \`find $(EXIF_SRC) -name '{}*.exif'\`"
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.exif.tgz
+
+ppmtars: file_sets
+	@mkdir -p $(DB)
+	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar -czvf $(DB)/{}.ppm.tgz \`find $(PPM_SRC) -name '{}*.ppm'\`"
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.ppm.tgz
+
 copytocvis:
 	@cp -v $(DB)/*.zip /mnt/cvis/natural_scenes
 	@touch /mnt/cvis/natural_scenes/*.zip
@@ -170,7 +182,7 @@ create_example_stats:
 	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats_noref.sh {} $(EXAMPLES4x4)
 
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt checksums.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 

@@ -88,6 +88,11 @@ Note that the thumbnail images below have been gamma corrected and their dynamic
 range has been adjusted so that they are easier to view on an 8-bit per channel
 monitor.  The 16-bit images contained in the archives are not gamma corrected
 and their dynamic ranges have not been adjusted.
+<p>
+Each files' size in bytes and
+<a href="http://en.wikipedia.org/wiki/MD5">checksum</a>
+may be found
+<a href="checksums.txt">here</a>.
 <a name="nature_scene_collection">
 <h3>Nature Scene Collection</h3>
 </a>
