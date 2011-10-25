@@ -34,9 +34,23 @@ ppmzips: file_sets
 	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
 	@ls -1 $(DB)/*.ppm.zip
 
-copytocvis:
-	@cp -v $(DB)/*.zip /mnt/cvis/natural_scenes
+exiftars: file_sets
+	@mkdir -p $(DB)
+	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar cvf $(DB)/{}.exif.tar \`find $(EXIF_SRC) -name '{}*.exif'\`"
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.exif.tar
+
+ppmtars: file_sets
+	@mkdir -p $(DB)
+	@cat file_sets.txt | xargs -P12 -I{} sh -c "tar cvf $(DB)/{}.ppm.tar \`find $(PPM_SRC) -name '{}*.ppm'\`"
+	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
+	@ls -1 $(DB)/*.ppm.tar
+
+movetocvis:
+	@mv $(DB)/*.zip /mnt/cvis/natural_scenes
 	@touch /mnt/cvis/natural_scenes/*.zip
+	@mv $(DB)/*.tar /mnt/cvis/natural_scenes
+	@touch /mnt/cvis/natural_scenes/*.tar
 
 THUMBS_DEST=/var/local/point_prediction/nikond700db/thumbs
 

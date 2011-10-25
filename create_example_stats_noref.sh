@@ -61,6 +61,6 @@ output $img_dir/$img_bn.pr7.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_di
 
 if [ -e $img_dir/$img_bn.fattal.ppm ]
 then
-	output $img_dir/$img_bn.fattal.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.fattal.ppm "---" "Fattal"
-	output $img_dir/$img_bn.glasner.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.glasner.ppm "---" "Glasner"
+	output $img_dir/$img_bn.fattal.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.fattal.ppm "Fattal"
+	output $img_dir/$img_bn.glasner.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.glasner.ppm "Glasner"
 fi
