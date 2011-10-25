@@ -184,7 +184,7 @@ create_example_stats:
 	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats_noref.sh {} $(EXAMPLES4x4)
 
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif pixel_sensitivities.txt checksums.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 
