@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file create_example_stats_noref.sh
+# @file create_sr_example_stats_noref.sh
 # @brief create super-resolution stats for each example image
 # @author Jeff Perry <jeffsp@gmail.com>
 # @version 1.0

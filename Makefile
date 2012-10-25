@@ -4,23 +4,23 @@
 # @version 1.0
 # @date 2011-09-27
 
-SRC=/media/sunbright/nikond700db/original
-DEST=/var/local/point_prediction/nikond700db/srgb_ahd_16bit
+SRC=~/Data/nikond700db/original
+DEST=~/Data/nikond700db/srgb_ahd_16bit
 
-all: convert_examples create_examples
+all: convert_examples create_sr_examples
 
 convert_ppm:
 	@mkdir -p $(DEST)
 	@find $(SRC) -name "*.nef" | xargs --verbose -P12 -I{} sh -c "dcraw -c -v -4 -o 1 -q 3 {} > $(DEST)/\`basename {} .nef\`.ppm"
 
-WEB=/var/local/point_prediction/web
+WEB=~/Data/web
 DB=$(WEB)/db
 
 file_sets:
 	@ls $(DEST) | cut -b 1-11 | uniq > file_sets.txt
 
 PPM_SRC=$(DEST)
-EXIF_SRC=/var/local/point_prediction/nikond700db/exif/
+EXIF_SRC=~/Data/nikond700db/exif/
 
 exifzips: file_sets
 	@mkdir -p $(DB)
@@ -52,7 +52,7 @@ movetocvis:
 	@mv $(DB)/*.tar /mnt/cvis/natural_scenes
 	@touch /mnt/cvis/natural_scenes/*.tar
 
-THUMBS_DEST=/var/local/point_prediction/nikond700db/thumbs
+THUMBS_DEST=~/Data/nikond700db/thumbs
 
 thumbs: file_sets
 	@mkdir -p $(THUMBS_DEST)
@@ -65,8 +65,8 @@ montages: file_sets
 # support for Johannes' image set
 #############################################
 
-JBSRC=/media/sunbright/nikond700db/jb
-JBDEST=/var/local/point_prediction/nikond700db/jb_srgb_ahd_16bit
+JBSRC=~/Data/nikond700db/jb
+JBDEST=~/Data/nikond700db/jb_srgb_ahd_16bit
 
 convert_ppm_jb:
 	@mkdir -p $(JBDEST)
@@ -82,7 +82,7 @@ ppmzips_jb:
 	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
 	@ls -1 $(DB)/*.ppm.zip
 
-JBTHUMBS_DEST=/var/local/point_prediction/nikond700db/jb_thumbs
+JBTHUMBS_DEST=~/Data/nikond700db/jb_thumbs
 
 thumbs_jb:
 	@mkdir -p $(JBTHUMBS_DEST)
@@ -94,62 +94,62 @@ montages_jb:
 #############################################
 
 EXAMPLESSRC1=$(WEB)/images1/*.nef
-EXAMPLESDEST1=super_resolution_images1
-CONVERT_CMD1="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(EXAMPLESDEST1)/\`basename {} .nef\`.ppm"
+SREXAMPLESDEST1=super_resolution_images1
+CONVERT_CMD1="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(SREXAMPLESDEST1)/\`basename {} .nef\`.ppm"
 
 EXAMPLESSRC2=$(WEB)/images2/*.cropped.ppm
-EXAMPLESDEST2=super_resolution_images2
-CONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $(EXAMPLESDEST2)/\`basename {} .cropped.ppm\`.ppm"
+SREXAMPLESDEST2=super_resolution_images2
+CONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $(SREXAMPLESDEST2)/\`basename {} .cropped.ppm\`.ppm"
 
 EXAMPLESSRC3=$(WEB)/images3/*.ppm
-EXAMPLESDEST3=super_resolution_images3
+SREXAMPLESDEST3=super_resolution_images3
 
 convert_examples:
-	mkdir -p $(EXAMPLESDEST1)
-	rm -f $(EXAMPLESDEST1)/*
+	mkdir -p $(SREXAMPLESDEST1)
+	rm -f $(SREXAMPLESDEST1)/*
 	find $(EXAMPLESSRC1) | xargs -P12 -I{} sh -c $(CONVERT_CMD1)
-	mkdir -p $(EXAMPLESDEST2)
-	rm -f $(EXAMPLESDEST2)/*
+	mkdir -p $(SREXAMPLESDEST2)
+	rm -f $(SREXAMPLESDEST2)/*
 	find $(EXAMPLESSRC2) | xargs -P12 -I{} sh -c $(CONVERT_CMD2)
-	mkdir -p $(EXAMPLESDEST3)
-	rm -f $(EXAMPLESDEST3)/*
-	cp $(EXAMPLESSRC3) $(EXAMPLESDEST3)
+	mkdir -p $(SREXAMPLESDEST3)
+	rm -f $(SREXAMPLESDEST3)/*
+	cp $(EXAMPLESSRC3) $(SREXAMPLESDEST3)
 
-EXAMPLES2x2=super_resolution_examples_2x2
-EXAMPLES4x4=super_resolution_examples_4x4
+SREXAMPLES2x2=super_resolution_examples_2x2
+SREXAMPLES4x4=super_resolution_examples_4x4
 
-create_example_images:
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES2x2) 2
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_images.sh {} $(EXAMPLES4x4) 4
-	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_images_noref.sh {} $(EXAMPLES4x4) 4
+create_sr_example_images:
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_images.sh {} $(SREXAMPLES2x2) 2
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_images.sh {} $(SREXAMPLES2x2) 2
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_images.sh {} $(SREXAMPLES4x4) 4
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_images.sh {} $(SREXAMPLES4x4) 4
+	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_images_noref.sh {} $(SREXAMPLES4x4) 4
 
 get_other_4x4_images:
-	cp $(WEB)/images3/*.fattal.png $(EXAMPLES4x4)
-	cp $(WEB)/images3/*.glasner.png $(EXAMPLES4x4)
-	find $(WEB)/images3/*.fattal.png | xargs --verbose -I{} sh -c "convert {} $(EXAMPLES4x4)/\`basename {} .png\`.ppm"
-	find $(WEB)/images3/*.glasner.png | xargs --verbose -I{} sh -c "convert {} $(EXAMPLES4x4)/\`basename {} .png\`.ppm"
+	cp $(WEB)/images3/*.fattal.png $(SREXAMPLES4x4)
+	cp $(WEB)/images3/*.glasner.png $(SREXAMPLES4x4)
+	find $(WEB)/images3/*.fattal.png | xargs --verbose -I{} sh -c "convert {} $(SREXAMPLES4x4)/\`basename {} .png\`.ppm"
+	find $(WEB)/images3/*.glasner.png | xargs --verbose -I{} sh -c "convert {} $(SREXAMPLES4x4)/\`basename {} .png\`.ppm"
 
 clean_example_pages:
-	mkdir -p $(EXAMPLES2x2)
-	mkdir -p $(EXAMPLES4x4)
-	rm -f $(EXAMPLES2x2)/*.shtml
-	rm -f $(EXAMPLES4x4)/*.shtml
+	mkdir -p $(SREXAMPLES2x2)
+	mkdir -p $(SREXAMPLES4x4)
+	rm -f $(SREXAMPLES2x2)/*.shtml
+	rm -f $(SREXAMPLES4x4)/*.shtml
 	rm -f sr1_2x2.shtml
 	rm -f sr2_2x2.shtml
 	rm -f sr1_4x4.shtml
 	rm -f sr2_4x4.shtml
 	rm -f sr3_4x4.shtml
-	cp style.css $(EXAMPLES2x2)
-	cp style.css $(EXAMPLES4x4)
+	cp style.css $(SREXAMPLES2x2)
+	cp style.css $(SREXAMPLES4x4)
 
-create_example_pages: clean_example_pages
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_2x2.shtml $(EXAMPLES2x2) "2x Super-resolution"
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_2x2.shtml $(EXAMPLES2x2) "2x Super-resolution"
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr1_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_example_pages.sh {} sr2_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
-	find $(EXAMPLESDEST3) -name "*.ppm" | sort -h | xargs -I{} ./create_example_pages_noref.sh {} sr3_4x4.shtml $(EXAMPLES4x4) "4x Super-resolution"
+create_sr_example_pages: clean_example_pages
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr1_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr2_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr1_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr2_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
+	find $(SREXAMPLESDEST3) -name "*.ppm" | sort -h | xargs -I{} ./create_sr_example_pages_noref.sh {} sr3_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
 
 # get files onto wsglab for conversion
 #
@@ -176,12 +176,12 @@ pr7_download:
 	rename .png.ppm .ppm super_resolution_examples_2x2/*.pr7.png.ppm
 	rename .png.ppm .ppm super_resolution_examples_4x4/*.pr7.png.ppm
 
-create_example_stats:
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES2x2)
-	find $(EXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
-	find $(EXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats.sh {} $(EXAMPLES4x4)
-	find $(EXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_example_stats_noref.sh {} $(EXAMPLES4x4)
+create_sr_example_stats:
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES2x2)
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES2x2)
+	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES4x4)
+	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES4x4)
+	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P12 -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
 publish:
 	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
@@ -197,5 +197,5 @@ clean:
 	rm -f *.montage.png
 	rm -f sr?_2x2.shtml
 	rm -f sr?_4x4.shtml
-	rm -f $(EXAMPLES2x2)/*
-	rm -f $(EXAMPLES4x4)/*
+	rm -f $(SREXAMPLES2x2)/*
+	rm -f $(SREXAMPLES4x4)/*
