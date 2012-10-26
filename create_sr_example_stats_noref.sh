@@ -18,7 +18,7 @@ img_fn=$1
 img_bn=$(basename $1 .ppm)
 img_dir=$2
 
-bin=~/projects/point_prediction
+bin=~/Projects/point_prediction
 
 output () {
 	echo "<div class=\"example_stats\">" > $1

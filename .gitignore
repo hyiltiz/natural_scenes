@@ -1,8 +1,4 @@
-super_resolution_examples_2x2/
-super_resolution_examples_4x4/
-super_resolution_images1/
-super_resolution_images2/
-super_resolution_images3/
+cps2010-2011.montage.png
 cps20100428.montage.png
 cps20100429.montage.png
 cps20100430.montage.png
@@ -12,10 +8,16 @@ cps20100511.montage.png
 cps20100513.montage.png
 cps20101008.montage.png
 cps20101012.montage.png
-cps2010-2011.montage.png
+denoise.shtml
+denoise_examples/
 file_sets.txt
 sr1_2x2.shtml
 sr1_4x4.shtml
 sr2_2x2.shtml
 sr2_4x4.shtml
 sr3_4x4.shtml
+super_resolution_examples_2x2/
+super_resolution_examples_4x4/
+super_resolution_images1/
+super_resolution_images2/
+super_resolution_images3/

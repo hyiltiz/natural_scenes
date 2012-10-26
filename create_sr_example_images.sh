@@ -44,7 +44,7 @@ convert_downsampled () {
 	esac
 }
 
-bin=~/projects/point_prediction
+bin=~/Projects/point_prediction
 
 convert_downsampled_odd () {
 	case $1 in
@@ -70,7 +70,7 @@ convert_input () {
 	convert -resize $1% -filter point $2/$3.downsampled.ppm $2/$3.input.ppm
 }
 
-bin2=~/projects/point_prediction/super_resolution
+bin2=~/Projects/point_prediction/super_resolution
 
 convert_biprior () {
 	case $1 in

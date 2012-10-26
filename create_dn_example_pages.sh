@@ -1,9 +1,9 @@
 #!/bin/bash
-# @file create_sr_example_pages.sh
-# @brief create a super-resolution example from an image
+# @file create_dn_example_pages.sh
+# @brief create a denoising example from an image
 # @author Jeff Perry <jeffsp@gmail.com>
 # @version 1.0
-# @date 2011-09-28
+# @date 2012-10-26
 
 if [ "$1" = "" ]; then
 	echo "no filename given"
@@ -25,8 +25,7 @@ if [ "$4" = "" ]; then
 	exit -1
 fi
 
-img_fn=$1
-img_bn=$(basename $1 .ppm)
+img_bn=$(basename $1 .original.ppm)
 html_fn=$2
 img_dir=$3
 title=$4
@@ -49,27 +48,24 @@ make_page () {
 	echo "<a href=\"../applications.shtml\">Previous Page</a>" >> $1
 	echo "<ul>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.compare.shtml\"><button>Input</button></a>" >> $1
+	echo "<a href=\"$2.compare.shtml\"><button>Original</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.biprior.shtml\"><button>Biprior</button></a>" >> $1
+	echo "<a href=\"$2.noisy.shtml\"><button>Noisy</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.bilinear.shtml\"><button>Bilinear</button></a>" >> $1
+	echo "<a href=\"$2.rcm.shtml\"><button>RCM</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.spline.shtml\"><button>Spline</button></a>" >> $1
+	echo "<a href=\"$2.wiener.shtml\"><button>Adaptive Wiener</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.bicubic.shtml\"><button>Bicubic</button></a>" >> $1
+	echo "<a href=\"$2.im.shtml\"><button>IM</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.lanczos.shtml\"><button>Lanczos</button></a>" >> $1
+	echo "<a href=\"$2.cbm3d.shtml\"><button>Color BM3D</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.pr7.shtml\"><button>Perfect Resize 7.0</button></a>" >> $1
-	echo "</li>" >> $1
-	echo "</ul>" >> $1
 	echo "</div>" >> $1
 	echo "<!--#include virtual=\"$2.$3.stats.shtml\" -->" >> $1
 	echo "<!--#include virtual=\"../footer.shtml\" -->" >> $1
@@ -78,10 +74,9 @@ make_page () {
 
 make_link $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
 
-make_page $img_dir/$img_bn.compare.shtml $img_bn input "$title"
-make_page $img_dir/$img_bn.biprior.shtml $img_bn biprior "$title"
-make_page $img_dir/$img_bn.bilinear.shtml $img_bn bilinear "$title"
-make_page $img_dir/$img_bn.spline.shtml $img_bn spline "$title"
-make_page $img_dir/$img_bn.bicubic.shtml $img_bn bicubic "$title"
-make_page $img_dir/$img_bn.lanczos.shtml $img_bn lanczos "$title"
-make_page $img_dir/$img_bn.pr7.shtml $img_bn pr7 "$title"
+make_page $img_dir/$img_bn.compare.shtml $img_bn original "$title"
+make_page $img_dir/$img_bn.noisy.shtml $img_bn noisy "$title"
+make_page $img_dir/$img_bn.rcm.shtml $img_bn rcm "$title"
+make_page $img_dir/$img_bn.wiener.shtml $img_bn wiener "$title"
+make_page $img_dir/$img_bn.im.shtml $img_bn im "$title"
+make_page $img_dir/$img_bn.cbm3d.shtml $img_bn cbm3d "$title"

@@ -127,6 +127,9 @@ a[href] {
 a:hover {
 	color: #000000;
 }
+button {
+	width: 140px;
+}
 img {
 	border: 0px solid #000000;
 }

@@ -36,7 +36,7 @@ href="http://en.wikipedia.org/wiki/Full-frame_digital_SLR">FX-format 23.9x36mm</
 </table>
 <br>
 <h2>Camera Calibration</h2>
-<a class="plot" href="pixel_sensitivities.txt"><img src="rgb_pixel_responses_plot.png"
+<a class="plot" href="srgb_pixel_sensitivities.txt"><img src="srgb_pixel_responses_plot.png"
 width=180 height=150 align=top></a>
 <p>The following pixel sensitivity functions may be used to convert the image
 RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
