@@ -10,7 +10,6 @@ In the following application examples, the input images were obtained by
 adding synthesized noise to the original images.  These images were then
 denoised using various denoising methods.
 <p>
-<h3>Natural Images Denoising</h3>
 <!--#include virtual="denoise.shtml" -->
 <p>
 <h2>Super-Resolution</h2>
@@ -32,10 +31,6 @@ then upsampled with various super-resolution methods.
 <p>
 In the following application examples, the original images were used as input,
 so there exists no references against which to measure error.
-<p>
-<h3>General Images 4x Super-resolution</h3>
-<!--#include virtual="sr3_4x4.shtml" -->
-<p>
 <p>
 <h3>General Images 4x Super-resolution</h3>
 <!--#include virtual="sr3_4x4.shtml" -->

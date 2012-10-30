@@ -52,7 +52,7 @@ make_page () {
 	echo "<a href=\"$2.compare.shtml\"><button>Input</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.biprior.shtml\"><button>Biprior</button></a>" >> $1
+	echo "<a href=\"$2.biprior.shtml\"><button>Biprior (RCM)</button></a>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
 	echo "<a href=\"$2.bilinear.shtml\"><button>Bilinear</button></a>" >> $1

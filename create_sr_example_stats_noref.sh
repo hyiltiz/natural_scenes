@@ -52,7 +52,7 @@ output () {
 }
 
 output $img_dir/$img_bn.input.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.downsampled.ppm "---"
-output $img_dir/$img_bn.biprior.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.biprior.ppm "Biprior"
+output $img_dir/$img_bn.biprior.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.biprior.ppm "Biprior (RCM)"
 output $img_dir/$img_bn.bilinear.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.bilinear.ppm "Bilinear"
 output $img_dir/$img_bn.spline.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.spline.ppm "Spline"
 output $img_dir/$img_bn.bicubic.stats.shtml $img_dir/$img_bn.downsampled.ppm $img_dir/$img_bn.bicubic.ppm "Bicubic"

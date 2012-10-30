@@ -46,8 +46,8 @@ copy_noisy () {
 }
 
 convert_thumb () {
-	convert $imopts -contrast-stretch 2%x1% -resize 42x28 $1/$2.original.png $1/$2.thumb.png
-	convert $imopts -contrast-stretch 2%x1% -resize 42x28 $1/$2.original.ppm $1/$2.thumb.ppm
+	convert $imopts -resize 42x28 $1/$2.original.png $1/$2.thumb.png
+	convert $imopts -resize 42x28 $1/$2.original.ppm $1/$2.thumb.ppm
 }
 
 convert_im () {

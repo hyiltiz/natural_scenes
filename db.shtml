@@ -36,10 +36,10 @@ href="http://en.wikipedia.org/wiki/Full-frame_digital_SLR">FX-format 23.9x36mm</
 </table>
 <br>
 <h2>Camera Calibration</h2>
-<a class="plot" href="srgb_pixel_sensitivities.txt"><img src="srgb_pixel_responses_plot.png"
-width=180 height=150 align=top></a>
 <p>The following pixel sensitivity functions may be used to convert the image
 RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
+<a class="plot" href="rgb_pixel_sensitivities.txt"><img src="rgb_pixel_responses_plot.png"
+width=360 height=300 align=top></a>
 <div id="clear"> </div>
 <!--
 <p>
@@ -77,7 +77,36 @@ The 4284 x 2844 pixel, 14-bit
 <a href="http://en.wikipedia.org/wiki/Raw_image_format">NEF format</a> images were converted to
 <a href="http://en.wikipedia.org/wiki/Netpbm_format">PPM format</a> using
 <a href="http://en.wikipedia.org/wiki/Dcraw">dcraw</a> v8.99 with the
-options "<code>-4 -o 1 -q 3</code>".
+options "<code>-4 -o 0 -q 3</code>".
+<p>
+<i>
+Note that prior to October 30, 2012, the database files contained on this site
+had been converted with the "<code>-o 1</code>" option, which specifies
+<a href="http://en.wikipedia.org/wiki/SRGB">
+sRGB colorspace
+</a>
+conversion.
+The previous image sets containing sRGB conversion may be found
+<a href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/sRGB">
+here.
+</a>
+<p>
+</i>
+<p>
+The image sets below do not contain sRGB conversion.  If you wish to convert to
+another colorspace, you may do so programmatically, with, for example,
+<a href="http://www.mathworks.com/products/matlab/">
+MATLAB
+</a>
+or
+<a href="http://www.python.org/">
+Python.
+</a>
+Also, many image processing applications like
+<a href="http://www.photoshop.com/">Photoshop</a> and
+<a href="http://imagemagick.org/">ImageMagick</a>
+allow for conversion to other
+colorspaces (sometimes called Color Profiles or ICC Profiles).
 <p>
 The metadata text files contain shutterspeeds, aperture settings, capture
 data and time, GPS coordinates, and other

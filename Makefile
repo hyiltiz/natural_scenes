@@ -5,18 +5,54 @@
 # @date 2011-09-27
 
 SRC=~/Data/nikond700db/original
-DEST=~/Data/nikond700db/srgb_ahd_16bit
+DEST=~/Data/nikond700db/rgb_ahd_16bit
 # cbm3d fails if your thread count is too high
 MAXPROCS=16
 
-all: convert_sr_examples create_sr_examples
+all_dn: \
+	create_dn_example_images \
+	create_dn_example_pages \
+	create_dn_example_stats
 
-convert_ppm:
-	@mkdir -p $(DEST)
-	@find $(SRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 1 -q 3 {} > $(DEST)/\`basename {} .nef\`.ppm"
+all_sr1: \
+	convert_sr_examples \
+	create_sr_example_images \
+	get_other_4x4_images \
+	create_sr_example_pages \
+	pr7_upload
+
+# now run pr7 on the 2x2 and 4x4 examples
+
+all_sr2: \
+	pr7_download \
+	create_sr_example_stats
+
+image_sets: \
+	convert_ppm \
+	exifzips \
+	ppmzips \
+	exiftars \
+	ppmtars \
+	thumbs \
+	montages \
+	convert_ppm_jb \
+	exifzips_jb \
+	ppmzips_jb \
+	thumbs_jb \
+	montages_jb
 
 WEB=~/Data/web
 DB=$(WEB)/db
+
+movetocvis:
+	@mv $(DB)/*.zip /mnt/cvis/natural_scenes
+	@touch /mnt/cvis/natural_scenes/*.zip
+	@mv $(DB)/*.tar /mnt/cvis/natural_scenes
+	@touch /mnt/cvis/natural_scenes/*.tar
+
+convert_ppm:
+	@mkdir -p $(DEST)
+	@find $(SRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 0 -q 3 {} > $(DEST)/\`basename {} .nef\`.ppm"
 
 file_sets:
 	@ls $(DEST) | cut -b 1-11 | uniq > file_sets.txt
@@ -48,12 +84,6 @@ ppmtars: file_sets
 	@echo "Move these files to CVIS on homepage.psy.utexas.edu:"
 	@ls -1 $(DB)/*.ppm.tar
 
-movetocvis:
-	@mv $(DB)/*.zip /mnt/cvis/natural_scenes
-	@touch /mnt/cvis/natural_scenes/*.zip
-	@mv $(DB)/*.tar /mnt/cvis/natural_scenes
-	@touch /mnt/cvis/natural_scenes/*.tar
-
 THUMBS_DEST=~/Data/nikond700db/thumbs
 
 thumbs: file_sets
@@ -68,11 +98,11 @@ montages: file_sets
 #############################################
 
 JBSRC=~/Data/nikond700db/jb
-JBDEST=~/Data/nikond700db/jb_srgb_ahd_16bit
+JBDEST=~/Data/nikond700db/jb_rgb_ahd_16bit
 
 convert_ppm_jb:
 	@mkdir -p $(JBDEST)
-	@find $(JBSRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 1 -q 3 {} > $(JBDEST)/\`basename {} .nef\`.ppm"
+	@find $(JBSRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 0 -q 3 {} > $(JBDEST)/\`basename {} .nef\`.ppm"
 
 exifzips_jb:
 	find $(JBSRC) -name '*.exif' | zip -j -@ $(DB)/cps2010-2011.exif.zip
@@ -97,7 +127,7 @@ montages_jb:
 
 EXAMPLESSRC1=$(WEB)/images1/*.nef
 SREXAMPLESDEST1=super_resolution_images1
-SRCONVERT_CMD1="dcraw -6 -q 3 -o 1 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(SREXAMPLESDEST1)/\`basename {} .nef\`.ppm"
+SRCONVERT_CMD1="dcraw -6 -q 3 -o 0 -g 1 1 -v -c {} | convert -crop 1024x768+1630+1038 -contrast-stretch 2%x1% -depth 8 - $(SREXAMPLESDEST1)/\`basename {} .nef\`.ppm"
 
 EXAMPLESSRC2=$(WEB)/images2/*.cropped.ppm
 SREXAMPLESDEST2=super_resolution_images2
@@ -155,11 +185,11 @@ clean_sr_example_pages:
 	cp style.css $(SREXAMPLES4x4)
 
 create_sr_example_pages: clean_sr_example_pages
-	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr1_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
-	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr2_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
-	find $(SREXAMPLESDEST1) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr1_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
-	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -I{} ./create_sr_example_pages.sh {} sr2_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
-	find $(SREXAMPLESDEST3) -name "*.ppm" | sort -h | xargs -I{} ./create_sr_example_pages_noref.sh {} sr3_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
+	find $(SREXAMPLESDEST1) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages.sh {} sr1_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
+	find $(SREXAMPLESDEST2) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages.sh {} sr2_2x2.shtml $(SREXAMPLES2x2) "2x Super-resolution"
+	find $(SREXAMPLESDEST1) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages.sh {} sr1_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
+	find $(SREXAMPLESDEST2) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages.sh {} sr2_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
+	find $(SREXAMPLESDEST3) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages_noref.sh {} sr3_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
 
 clean_dn_example_pages:
 	mkdir -p $(DNEXAMPLES)
@@ -168,7 +198,7 @@ clean_dn_example_pages:
 	cp style.css $(DNEXAMPLES)
 
 create_dn_example_pages: clean_dn_example_pages
-	find $(DNEXAMPLES) -name "*.original.ppm" | xargs -I{} ./create_dn_example_pages.sh {} denoise.shtml $(DNEXAMPLES) "Denoising"
+	find $(DNEXAMPLES) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise.shtml $(DNEXAMPLES) "Denoising"
 
 # get files onto wsglab for conversion
 #
@@ -206,7 +236,7 @@ create_dn_example_stats:
 	find $(DNEXAMPLES) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES)
 
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt denoise_examples super_resolution_examples* cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 
