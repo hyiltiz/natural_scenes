@@ -262,7 +262,7 @@ create_dn_example_stats:
 	find $(DNEXAMPLES2) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES2)
 
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt denoise_examples super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt denoise_examples* super_resolution_examples* cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 

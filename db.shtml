@@ -80,7 +80,7 @@ The 4284 x 2844 pixel, 14-bit
 options "<code>-4 -o 0 -q 3</code>".
 <p>
 <i>
-Note that prior to October 30, 2012, the database files contained on this site
+Note that prior to October 31, 2012, the database files contained on this site
 had been converted with the "<code>-o 1</code>" option, which specifies
 <a href="http://en.wikipedia.org/wiki/SRGB">
 sRGB colorspace
