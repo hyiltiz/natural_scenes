@@ -136,6 +136,8 @@ SRCONVERT_CMD2="convert -crop 1024x768+0+0 -contrast-stretch 2%x1% -depth 8 {} $
 EXAMPLESSRC3=$(WEB)/images3/*.ppm
 SREXAMPLESDEST3=super_resolution_images3
 
+EXAMPLESSRC4=$(WEB)/images2/*.nef
+
 convert_sr_examples:
 	mkdir -p $(SREXAMPLESDEST1)
 	rm -f $(SREXAMPLESDEST1)/*
@@ -157,13 +159,31 @@ create_sr_example_images:
 	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_images.sh {} $(SREXAMPLES4x4) 4
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_images_noref.sh {} $(SREXAMPLES4x4) 4
 
-DNEXAMPLES=denoise_examples
+DNEXAMPLES1=denoise_examples1
+DNEXAMPLES2=denoise_examples2
 ISO=3200
 
 create_dn_example_images:
-	mkdir -p $(DNEXAMPLES)
-	rm -f $(DNEXAMPLES)/*
-	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES) $(ISO)
+	mkdir -p $(DNEXAMPLES1)
+	rm -f $(DNEXAMPLES1)/*
+	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES1) $(ISO) ~/Data/nikond700db/denoising ppm
+	mkdir -p $(DNEXAMPLES2)
+	rm -f $(DNEXAMPLES2)/*
+	find $(EXAMPLESSRC4) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES2) $(ISO) ~/Data/web/images2 gamma.ppm
+
+compare_dn:
+	@echo Noisy:
+	@find $(DNEXAMPLES1) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.noisy.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
+	@echo RCM:
+	@find $(DNEXAMPLES1) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.rcm.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
+	@echo CBM3D:
+	@find $(DNEXAMPLES1) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.cbm3d.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
+	@echo Noisy:
+	@find $(DNEXAMPLES2) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.noisy.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
+	@echo RCM:
+	@find $(DNEXAMPLES2) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.rcm.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
+	@echo CBM3D:
+	@find $(DNEXAMPLES2) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.cbm3d.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
 
 get_other_4x4_images:
 	cp $(WEB)/images3/*.fattal.png $(SREXAMPLES4x4)
@@ -192,13 +212,18 @@ create_sr_example_pages: clean_sr_example_pages
 	find $(SREXAMPLESDEST3) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages_noref.sh {} sr3_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
 
 clean_dn_example_pages:
-	mkdir -p $(DNEXAMPLES)
-	rm -f $(DNEXAMPLES)/*.shtml
-	rm -f denoise.shtml
-	cp style.css $(DNEXAMPLES)
+	mkdir -p $(DNEXAMPLES1)
+	mkdir -p $(DNEXAMPLES2)
+	rm -f $(DNEXAMPLES1)/*.shtml
+	rm -f $(DNEXAMPLES2)/*.shtml
+	rm -f denoise1.shtml
+	rm -f denoise2.shtml
+	cp style.css $(DNEXAMPLES1)
+	cp style.css $(DNEXAMPLES2)
 
 create_dn_example_pages: clean_dn_example_pages
-	find $(DNEXAMPLES) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise.shtml $(DNEXAMPLES) "Denoising"
+	find $(DNEXAMPLES1) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise1.shtml $(DNEXAMPLES1) "Denoising"
+	find $(DNEXAMPLES2) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise2.shtml $(DNEXAMPLES2) "Denoising"
 
 # get files onto wsglab for conversion
 #
@@ -233,7 +258,8 @@ create_sr_example_stats:
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
 create_dn_example_stats:
-	find $(DNEXAMPLES) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES)
+	find $(DNEXAMPLES1) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES1)
+	find $(DNEXAMPLES2) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES2)
 
 publish:
 	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt denoise_examples super_resolution_examples* cps:/var/www/html/natural_scenes/

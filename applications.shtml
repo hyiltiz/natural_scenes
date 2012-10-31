@@ -4,14 +4,6 @@
 <div class="content">
 
 <p>
-<h2>Denoising</h2>
-<p>
-In the following application examples, the input images were obtained by
-adding synthesized noise to the original images.  These images were then
-denoised using various denoising methods.
-<p>
-<!--#include virtual="denoise.shtml" -->
-<p>
 <h2>Super-Resolution</h2>
 <p>
 In the following application examples, the input images were obtained by
@@ -35,7 +27,7 @@ so there exists no references against which to measure error.
 <h3>General Images 4x Super-resolution</h3>
 <!--#include virtual="sr3_4x4.shtml" -->
 <p>
-<h2>Notes</h2>
+<h2>Super-Resolution Notes</h2>
 <p>
 The Gaussian kernel used to blur the images in the first group of examples had a
 standard deviation of 0.85 or 1.7 pixels and a support size of 1.5, 2.0, 3.5, or
@@ -59,6 +51,18 @@ The images in the second group of examples were obtained from
 The Weizmann Institute of Science
 Faculty of Mathematics and Computer Science
 Computer Vision Lab</a>.
+
+<h2>Denoising</h2>
+<p>
+In the following application examples, the input images were obtained by
+adding synthesized noise to the original images.  These images were then
+denoised using various denoising methods.
+<p>
+<h3>General Images Denoising</h3>
+<!--#include virtual="denoise2.shtml" -->
+<h3>Natural Images Denoising</h3>
+<!--#include virtual="denoise1.shtml" -->
+<p>
 
 </div>
 

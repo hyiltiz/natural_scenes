@@ -17,20 +17,28 @@ if [ "$3" = "" ]; then
 	echo "no iso given"
 	exit -1
 fi
+if [ "$4" = "" ]; then
+	echo "no source directory given"
+	exit -1
+fi
+if [ "$5" = "" ]; then
+	echo "no original extension given"
+	exit -1
+fi
 
 img_fn=$1
 img_bn=$(basename $1 .nef)
 img_dir=$2
 iso=$3
+noise_images=$4
+orig_ext=$5
 # im can fail if too many threads try to execute
 imopts="-limit thread 1"
-
-noise_images=~/Data/nikond700db/denoising
 
 # This code relies upon the original images already having been converted by
 # the denoising code.
 copy_original () {
-	convert $imopts -crop 1024x768+1630+1038 $noise_images/$2.ppm $1/$2.original.ppm
+	convert $imopts -crop 1024x768+1630+1038 $noise_images/$2.$orig_ext $1/$2.original.ppm
 	convert $imopts $1/$2.original.ppm $1/$2.original.png
 }
 
