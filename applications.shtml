@@ -67,10 +67,8 @@ method based upon Natural Scene Statistics.
 <!--#include virtual="denoise2_sigma10.shtml" -->
 <br>High Noise Levels<br>
 <!--#include virtual="denoise2_sigma15.shtml" -->
-<!--
 <br>Very High Noise Levels<br>
 <!--#include virtual="denoise2_sigma25.shtml" -->
--->
 <br>Low Noise Levels<br>
 <!--#include virtual="denoise2_sigma5.shtml" -->
 <h3>Natural Images Denoising</h3>
@@ -78,10 +76,8 @@ method based upon Natural Scene Statistics.
 <!--#include virtual="denoise1_sigma10.shtml" -->
 <br>High Noise Levels<br>
 <!--#include virtual="denoise1_sigma15.shtml" -->
-<!--
 <br>Very High Noise Levels<br>
 <!--#include virtual="denoise1_sigma25.shtml" -->
--->
 <br>Low Noise Levels<br>
 <!--#include virtual="denoise1_sigma5.shtml" -->
 <p>
