@@ -10,9 +10,9 @@ DEST=~/Data/nikond700db/rgb_ahd_16bit
 MAXPROCS=16
 
 # You have to build the pages for each value of sigma by hand.
-SIGMA=5
+#SIGMA=5
 #SIGMA=10
-#SIGMA=15
+SIGMA=15
 #SIGMA=25
 all_dn: \
 	create_dn_example_images \
