@@ -52,7 +52,6 @@ The Weizmann Institute of Science
 Faculty of Mathematics and Computer Science
 Computer Vision Lab</a>.
 
-<!--
 <a name="denoising"></a>
 <h2>Denoising</h2>
 <p>
@@ -64,11 +63,24 @@ The Recursive Conditional Moments (RCM) method used in these examples is a
 method based upon Natural Scene Statistics.
 <p>
 <h3>General Images Denoising</h3>
-<!--#include virtual="denoise2.shtml" -->
+<br>Low Noise Levels<br>
+<!--#include virtual="denoise2_sigma5.shtml" -->
+<br>Medium Noise Levels<br>
+<!--#include virtual="denoise2_sigma10.shtml" -->
+<br>High Noise Levels<br>
+<!--#include virtual="denoise2_sigma15.shtml" -->
+<br>Very High Noise Levels<br>
+<!--#include virtual="denoise2_sigma25.shtml" -->
 <h3>Natural Images Denoising</h3>
-<!--#include virtual="denoise1.shtml" -->
+<br>Low Noise Levels<br>
+<!--#include virtual="denoise1_sigma5.shtml" -->
+<br>Medium Noise Levels<br>
+<!--#include virtual="denoise1_sigma10.shtml" -->
+<br>High Noise Levels<br>
+<!--#include virtual="denoise1_sigma15.shtml" -->
+<br>Very High Noise Levels<br>
+<!--#include virtual="denoise1_sigma25.shtml" -->
 <p>
--->
 
 </div>
 

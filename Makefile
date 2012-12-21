@@ -9,6 +9,11 @@ DEST=~/Data/nikond700db/rgb_ahd_16bit
 # cbm3d fails if your thread count is too high
 MAXPROCS=16
 
+# You have to build the pages for each value of sigma by hand.
+SIGMA=5
+#SIGMA=10
+#SIGMA=15
+#SIGMA=25
 all_dn: \
 	create_dn_example_images \
 	create_dn_example_pages \
@@ -159,17 +164,34 @@ create_sr_example_images:
 	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_images.sh {} $(SREXAMPLES4x4) 4
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_images_noref.sh {} $(SREXAMPLES4x4) 4
 
-DNEXAMPLES1=denoise_examples1
-DNEXAMPLES2=denoise_examples2
-ISO=3200
+DNEXAMPLES1=denoise_examples1_sigma$(SIGMA)
+DNEXAMPLES2=denoise_examples2_sigma$(SIGMA)
 
 create_dn_example_images:
 	mkdir -p $(DNEXAMPLES1)
 	rm -f $(DNEXAMPLES1)/*
-	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES1) $(ISO) ~/Data/nikond700db/denoising ppm
+	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES1) $(SIGMA) ~/Data/nikond700db/denoising ppm
 	mkdir -p $(DNEXAMPLES2)
 	rm -f $(DNEXAMPLES2)/*
-	find $(EXAMPLESSRC4) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES2) $(ISO) ~/Data/web/images2 gamma.ppm
+	find $(EXAMPLESSRC4) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_images.sh {} $(DNEXAMPLES2) $(SIGMA) ~/Data/web/images2 gamma.ppm
+
+clean_dn_example_pages:
+	mkdir -p $(DNEXAMPLES1)
+	mkdir -p $(DNEXAMPLES2)
+	rm -f $(DNEXAMPLES1)/*.shtml
+	rm -f $(DNEXAMPLES2)/*.shtml
+	rm -f denoise1_sigma$(SIGMA).shtml
+	rm -f denoise2_sigma$(SIGMA).shtml
+	cp style.css $(DNEXAMPLES1)
+	cp style.css $(DNEXAMPLES2)
+
+create_dn_example_pages: clean_dn_example_pages
+	find $(DNEXAMPLES1) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise1_sigma$(SIGMA).shtml $(DNEXAMPLES1) "Denoising"
+	find $(DNEXAMPLES2) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise2_sigma$(SIGMA).shtml $(DNEXAMPLES2) "Denoising"
+
+create_dn_example_stats:
+	find $(DNEXAMPLES1) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES1)
+	find $(DNEXAMPLES2) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES2)
 
 compare_dn:
 	@echo Noisy:
@@ -211,20 +233,6 @@ create_sr_example_pages: clean_sr_example_pages
 	find $(SREXAMPLESDEST2) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages.sh {} sr2_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
 	find $(SREXAMPLESDEST3) -name "*.ppm" | sort | xargs -I{} ./create_sr_example_pages_noref.sh {} sr3_4x4.shtml $(SREXAMPLES4x4) "4x Super-resolution"
 
-clean_dn_example_pages:
-	mkdir -p $(DNEXAMPLES1)
-	mkdir -p $(DNEXAMPLES2)
-	rm -f $(DNEXAMPLES1)/*.shtml
-	rm -f $(DNEXAMPLES2)/*.shtml
-	rm -f denoise1.shtml
-	rm -f denoise2.shtml
-	cp style.css $(DNEXAMPLES1)
-	cp style.css $(DNEXAMPLES2)
-
-create_dn_example_pages: clean_dn_example_pages
-	find $(DNEXAMPLES1) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise1.shtml $(DNEXAMPLES1) "Denoising"
-	find $(DNEXAMPLES2) -name "*.original.ppm" | sort | xargs -I{} ./create_dn_example_pages.sh {} denoise2.shtml $(DNEXAMPLES2) "Denoising"
-
 # get files onto wsglab for conversion
 #
 # you have to convert the pr7 files before you can generate stats
@@ -257,12 +265,8 @@ create_sr_example_stats:
 	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES4x4)
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
-create_dn_example_stats:
-	find $(DNEXAMPLES1) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES1)
-	find $(DNEXAMPLES2) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES2)
-
 publish:
-	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico pixel_sensitivities.txt checksums.txt denoise_examples* super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt denoise_examples* super_resolution_examples* cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 

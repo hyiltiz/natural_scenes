@@ -10,6 +10,19 @@ scenes.
 <h2>Publications</h2>
 <p>
 <div class="citation1">
+<a href="">
+Perry JS & Geisler WS (2012). Natural scene statistics for image denoising. (In Review)
+</a>
+</div>
+<div class="citation1">
+<a href="">
+D'Antona AD, Perry JS & Geisler WS (2012).
+Humans make efficient use of natural image statistics
+when performing spatial interpolation.
+(In Review)
+</a>
+</div>
+<div class="citation1">
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_SPIE_2012.pdf">
 Burge J & Geisler WS (2012). Optimal defocus estimates from individual images
 for autofocusing a digital camera. Proceedings of the SPIE, 8299, 82990: E1-E12,

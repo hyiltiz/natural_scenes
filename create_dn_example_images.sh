@@ -14,7 +14,7 @@ if [ "$2" = "" ]; then
 	exit -1
 fi
 if [ "$3" = "" ]; then
-	echo "no iso given"
+	echo "no sigma given"
 	exit -1
 fi
 if [ "$4" = "" ]; then
@@ -29,7 +29,7 @@ fi
 img_fn=$1
 img_bn=$(basename $1 .nef)
 img_dir=$2
-iso=$3
+sigma=$3
 noise_images=$4
 orig_ext=$5
 # im can fail if too many threads try to execute
@@ -38,18 +38,41 @@ imopts="-limit thread 1"
 # This code relies upon the original images already having been converted by
 # the denoising code.
 copy_original () {
-	convert $imopts -crop 1024x768+1630+1038 $noise_images/$2.$orig_ext $1/$2.original.ppm
+
+	if [ "$2" = "cps201009163510" ]
+	then
+		convert $imopts -crop 1024x768+2000+600 $noise_images/$2.$orig_ext $1/$2.original.ppm
+	elif [ "$2" = "cps201104154614" ]
+	then
+		convert $imopts -crop 1024x768+600+1100 $noise_images/$2.$orig_ext $1/$2.original.ppm
+	elif [ "$2" = "cps201104154611" ]
+	then
+		convert $imopts -crop 1024x768+2200+800 $noise_images/$2.$orig_ext $1/$2.original.ppm
+	else
+		convert $imopts -crop 1024x768+1630+1038 $noise_images/$2.$orig_ext $1/$2.original.ppm
+	fi
 	convert $imopts $1/$2.original.ppm $1/$2.original.png
 }
 
-bin=~/Projects/point_prediction/rcm/build/release
+bin=~/Projects/point_prediction/denoising/build/release
 shbin=~/Projects/point_prediction/denoising/
-lut=~/Projects/point_prediction/rcm
+lut=~/Projects/point_prediction/denoising
 
 # This code relies upon the noisy images already having been created.  Make sure
 # the noise they contain is the correct type of noise!
 copy_noisy () {
-	convert $imopts -crop 1024x768+1630+1038 $noise_images/$3.iso$1.ppm $2/$3.noisy.ppm
+	if [ "$3" = "cps201009163510" ]
+	then
+		convert $imopts -crop 1024x768+2000+600 $noise_images/$3.sigma$1.ppm $2/$3.noisy.ppm
+	elif [ "$3" = "cps201104154614" ]
+	then
+		convert $imopts -crop 1024x768+600+1100 $noise_images/$3.sigma$1.ppm $2/$3.noisy.ppm
+	elif [ "$3" = "cps201104154611" ]
+	then
+		convert $imopts -crop 1024x768+2200+800 $noise_images/$3.sigma$1.ppm $2/$3.noisy.ppm
+	else
+		convert $imopts -crop 1024x768+1630+1038 $noise_images/$3.sigma$1.ppm $2/$3.noisy.ppm
+	fi
 	convert $imopts $2/$3.noisy.ppm $2/$3.noisy.png
 }
 
@@ -64,7 +87,7 @@ convert_im () {
 }
 
 convert_rcm () {
-	$bin/denoise $lut/denoise.iso$1.lut < $2/$3.noisy.ppm > $2/$3.rcm.ppm
+	$bin/bpyuv $lut/yuv.sigma$1.lut < $2/$3.noisy.ppm > $2/$3.rcm.ppm
 	convert $imopts $2/$3.rcm.ppm $2/$3.rcm.png
 }
 
@@ -78,15 +101,15 @@ convert_wiener () {
 
 convert_cbm3d () {
 	cd $shbin
-	./cbm3d_denoise.sh $pwd/$1/$2.noisy.ppm 13.41 $pwd/$1/$2.cbm3d.ppm
+	./cbm3d_denoise.sh $pwd/$2/$3.noisy.ppm $1 $pwd/$2/$3.cbm3d.ppm
 	cd $pwd
-	convert $imopts $1/$2.cbm3d.ppm $1/$2.cbm3d.png
+	convert $imopts $2/$3.cbm3d.ppm $2/$3.cbm3d.png
 }
 
 copy_original $img_dir $img_bn
-copy_noisy $iso $img_dir $img_bn
+copy_noisy $sigma $img_dir $img_bn
 convert_thumb $img_dir $img_bn
 convert_im $img_dir $img_bn
-convert_rcm $iso $img_dir $img_bn
+convert_rcm $sigma $img_dir $img_bn
 convert_wiener $img_dir $img_bn
-convert_cbm3d $img_dir $img_bn
+convert_cbm3d $sigma $img_dir $img_bn
