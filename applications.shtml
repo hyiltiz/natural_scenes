@@ -59,7 +59,7 @@ In the following application examples, the input images were obtained by
 adding synthesized noise to the original images.  These images were then
 denoised using various denoising methods.
 <p>
-The Recursive Conditional Moments (RCM) method used in these examples is a
+The Recursive Conditional Means (RCM) method used in these examples is a
 method based upon Natural Scene Statistics.
 <p>
 <h3>General Images Denoising</h3>
