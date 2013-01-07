@@ -48,22 +48,22 @@ make_page () {
 	echo "<a href=\"../applications.shtml#denoising\">Previous Page</a>" >> $1
 	echo "<ul>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.compare.shtml\"><button>Original</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.compare.shtml'\">Original</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.noisy.shtml\"><button>Noisy</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.noisy.shtml'\">Noisy</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.rcm.shtml\"><button>RCM</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.rcm.shtml'\">RCM</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.wiener.shtml\"><button>Adaptive Wiener</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.wiener.shtml'\">Adaptive Wiener</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.im.shtml\"><button>IM</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.im.shtml'\">IM</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.cbm3d.shtml\"><button>Color BM3D</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.cbm3d.shtml'\">Color BM3D</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
 	echo "</div>" >> $1

@@ -49,25 +49,25 @@ make_page () {
 	echo "<a href=\"../applications.shtml\">Previous Page</a>" >> $1
 	echo "<ul>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.compare.shtml\"><button>Input</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.compare.shtml'\">Input</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.biprior.shtml\"><button>Biprior (RCM)</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.biprior.shtml'\">Biprior (RCM)</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.bilinear.shtml\"><button>Bilinear</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.bilinear.shtml'\">Bilinear</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.spline.shtml\"><button>Spline</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.spline.shtml'\">Spline</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.bicubic.shtml\"><button>Bicubic</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.bicubic.shtml'\">Bicubic</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.lanczos.shtml\"><button>Lanczos</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.lanczos.shtml'\">Lanczos</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<a href=\"$2.pr7.shtml\"><button>Perfect Resize 7.0</button></a>" >> $1
+	echo "<button onclick=\"location.href='$2.pr7.shtml'\">Perfect Resize 7.0</button>" >> $1
 	echo "</li>" >> $1
 	echo "</ul>" >> $1
 	echo "</div>" >> $1
