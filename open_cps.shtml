@@ -5,13 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Natural Scene Statistics in Vision Science</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="http://www.cps.utexas.edu/natural_scenes/favicon.ico?v=2" />
 </head>
 <body>
 
 <!-- Google Analytics Tracking code for NSS -->
 <script type="text/javascript">
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-37414764-1']);
+_gaq.push(['_setAccount', 'UA-37433044-1']);
 _gaq.push(['_trackPageview']);
 (function() {
  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -20,4 +21,4 @@ _gaq.push(['_trackPageview']);
  })();
 </script>
 
-<div id="example_page">
+<div id="main">
