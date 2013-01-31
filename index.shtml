@@ -10,8 +10,16 @@ scenes.
 <h2>Publications</h2>
 <p>
 <div class="citation1">
+<a href="RCM_denoising_TechReport.pdf">
+Perry JS & Geisler WS (2013) Natural scene statistics for image denoising. Technical Report UT-CPS-TR-13-001, Austin:
+Center for Perceptual Systems.
+</a>
+</div>
+<!--
+<div class="citation1">
 Perry JS & Geisler WS (2013). Natural scene statistics for image denoising. (In Review)
 </div>
+-->
 <div class="citation1">
 D'Antona AD, Perry JS & Geisler WS (2013).
 Humans make efficient use of natural image statistics
