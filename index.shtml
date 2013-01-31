@@ -10,10 +10,10 @@ scenes.
 <h2>Publications</h2>
 <p>
 <div class="citation1">
-Perry JS & Geisler WS (2012). Natural scene statistics for image denoising. (In Review)
+Perry JS & Geisler WS (2013). Natural scene statistics for image denoising. (In Review)
 </div>
 <div class="citation1">
-D'Antona AD, Perry JS & Geisler WS (2012).
+D'Antona AD, Perry JS & Geisler WS (2013).
 Humans make efficient use of natural image statistics
 when performing spatial interpolation.
 (In Review)
@@ -22,7 +22,7 @@ when performing spatial interpolation.
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_SPIE_2012.pdf">
 Burge J & Geisler WS (2012). Optimal defocus estimates from individual images
 for autofocusing a digital camera. Proceedings of the SPIE, 8299, 82990: E1-E12,
-January: Burlingame, CA
+January: Burlingame, CA.
 </a>
 </div>
 <div class="citation1">
@@ -41,14 +41,34 @@ Optical Society of America, paper IMC1.
 <div class="citation1">
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_PNAS_2011.pdf">
 Burge J, Geisler WS (2011). Optimal defocus estimation in individual natural
-images. Proceedings of the National Academy of Sciences, 108 (40): 16849-16854
+images. Proceedings of the National Academy of Sciences, 108 (40): 16849-16854.
 </a>
 </div>
 <div class="citation1">
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_OSA_2011.pdf">
 Burge J, Geisler WS (2011). Optimal image-based defocus estimates from
 individual natural images. Proceedings of the Optical Society of America:
-Imaging Systems & Applications, July: Toronto, Canada
+Imaging Systems & Applications, July: Toronto, Canada.
+</a>
+</div>
+<div class="citation1">
+<a href="GeislerPerryVisNeuro09.pdf">
+WS Geisler, JS Perry (2009).
+Contour statistics in natural images: Grouping across occlusions
+Visual Neuroscience, 26, 109-121.
+</a>
+</div>
+<div class="citation1">
+<a href="Geisler_et_al_SPIE_2008.pdf">
+WS Geisler, JS Perry, AD Ing (2008).
+Natural Systems Analysis.
+SPIE Proceedings 6806, Human Vision and Electronic Imaging XIII, February 13.
+</a>
+</div>
+<div class="citation1">
+<a href="Geisler_et_al_VR_2001.pdf">
+WS Geisler, JS Perry, BJ Super, DP Gallogly (2001).
+Vision Research 41, 711-724.
 </a>
 </div>
 
