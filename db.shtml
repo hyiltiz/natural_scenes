@@ -236,10 +236,10 @@ metadata]</a>
 href="http://homepage.psy.utexas.edu/homepage/Group/cvis/natural_scenes/cps2010-2011.ppm.zip"><img src="cps2010-2011.montage.png"></a>
 
 <a name="kodakdb">
-<h3>Kodak Contour Database</h3>
+<h3>Contour Database</h3>
 </a>
 <table>
-<tr><td>Content</td><td>Hand segmented contour data from Kodak images</td></tr>
+<tr><td>Content</td><td>Hand segmented contour data from natural images</td></tr>
 <tr><td>Total images</td><td>20</td></tr>
 <tr><td>Data format</td><td>text</td></tr>
 </table>
