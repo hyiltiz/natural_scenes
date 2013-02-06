@@ -1,0 +1,26 @@
+<!--#include virtual="open.shtml" -->
+<!--#include virtual="header.shtml" -->
+
+<div class="content">
+
+<p>
+<h2>Software</h2>
+<p>
+The following site is a free service provided by the Center for Perceptual Systems at the University of Texas at Austin
+that offers image processing tools based upon the Recursive Conditional Means Method.
+<p>
+<i>
+<div class="software_link">
+<a href="http://rcm.cps.utexas.edu">
+RCM Tools: State of the Art Image Processing
+<br>
+http://rcm.cps.utexas.edu
+</a>
+</div>
+</i>
+
+</div>
+
+<!--#include virtual="menu.shtml" -->
+<!--#include virtual="footer.shtml" -->
+<!--#include virtual="close.shtml" -->

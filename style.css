@@ -115,6 +115,9 @@
 .citation2 {
 	margin: 0px 30px 20px 30px;
 }
+.software_link {
+	margin: 0px 30px 20px 30px;
+}
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: medium;
