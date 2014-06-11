@@ -10,7 +10,16 @@ scenes.
 <h2>Publications</h2>
 <p>
 <div class="citation1">
-Burge J & Geisler WS (2013). Optimal disparity estimation in natural stereo images. (In Review)
+<a href="Burge_Geisler_JOV_2014.pdf">
+Burge J & Geisler WS (2014) Optimal disparity estimation in natural stereo images. Journal of Vision, 14(2):1, 1-18.
+</a>
+</div>
+<div class="citation1">
+<a href="DAntona-et-al-2013.pdf">
+D’Antona AD, Perry JS & Geisler WS (2013) Humans make efficient use of natural
+image statistics when performing spatial interpolation. Journal of Vision,
+13(14):11, 1-13.
+</a>
 </div>
 <div class="citation1">
 <a href="RCM_denoising_TechReport.pdf">
@@ -23,12 +32,6 @@ Center for Perceptual Systems.
 Perry JS & Geisler WS (2013). Natural scene statistics for image denoising. (In Review)
 </div>
 -->
-<div class="citation1">
-D'Antona AD, Perry JS & Geisler WS (2013).
-Humans make efficient use of natural image statistics
-when performing spatial interpolation.
-(In Review)
-</div>
 <div class="citation1">
 <a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_SPIE_2012.pdf">
 Burge J & Geisler WS (2012). Optimal defocus estimates from individual images
