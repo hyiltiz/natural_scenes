@@ -47,9 +47,13 @@ href="http://en.wikipedia.org/wiki/Full-frame_digital_SLR">FX-format 23.9x36mm</
 <h2>Camera Calibration</h2>
 <p>The following pixel sensitivity functions may be used to convert the image
 RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
-<a class="plot" href="rgb_pixel_sensitivities.txt"><img src="rgb_pixel_responses_plot.png"
-width=360 height=300 align=top></a>
+<a class="plot" href="NormalizedD700SpectralSensitivities.txt"><img src="D700_Spectral_Sensitivity_Functions.png"
+width=400 height=300 align=top></a>
 <div id="clear"> </div>
+<p>Database image pixel values may be converted to CIE XYZ colorspace using the following equation, which is found in
+<a href="Camera_Calibration_Notes.pdf">these Camera Calibration Notes</a>.
+<p><img src="rgb_to_xyz.png">
+<p>The values of the F-number (f) and the exposure time in seconds (T) are available in the EXIF file for each image.
 <!--
 <p>
 <a class="plot" href="rgb_response_linearity_plot.png"><img src="rgb_response_linearity_plot.png"
