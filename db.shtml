@@ -51,7 +51,7 @@ RGB values to other colorspaces (e.g.: XYZ, LMS, ..., etc.).
 <div id="clear"> </div>
 <p>Database image pixel values may be converted to CIE XYZ colorspace using the following equation, which is found in
 <a href="Camera_Calibration_Notes.pdf">these Camera Calibration Notes</a>.
-<p><img class="plot" src="rgb_to_xyz.png" align=top>
+<p><img src="rgb_to_xyz.png" align=top style="padding: 20px 100px 20px 40px;">
 <p>The values of the F-number (f) and the exposure time in seconds (T) are available in the EXIF file for each image.
 <!--
 <p>
