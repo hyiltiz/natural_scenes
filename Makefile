@@ -267,7 +267,7 @@ create_sr_example_stats:
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
 publish_html:
-	scp style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt cps:/var/www/html/natural_scenes/
+	scp style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt NormalizedD700SpectralSensitivities.txt cps:/var/www/html/natural_scenes/
 	# this html code contains a different statcounter id
 	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
 	# this html code contains different google analytics ids
