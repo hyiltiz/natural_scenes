@@ -266,16 +266,18 @@ create_sr_example_stats:
 	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES4x4)
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
+WEBSITE=natural_scenes:/mnt/www/natural-scenes.cps.utexas.edu
+
 publish_html:
-	scp style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt NormalizedD700SpectralSensitivities.txt cps:/var/www/html/natural_scenes/
+	scp style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt NormalizedD700SpectralSensitivities.txt $(WEBSITE)
 	# this html code contains a different statcounter id
-	scp close_cps.shtml cps:/var/www/html/natural_scenes/close.shtml
+	scp close_cps.shtml $(WEBSITE)/close.shtml
 	# this html code contains different google analytics ids
-	scp open_cps.shtml cps:/var/www/html/natural_scenes/open.shtml
-	scp open_example_cps.shtml cps:/var/www/html/natural_scenes/open_example.shtml
+	scp open_cps.shtml $(WEBSITE)/open.shtml
+	scp open_example_cps.shtml $(WEBSITE)/open_example.shtml
 
 publish_examples:
-	scp -r denoise_examples* super_resolution_examples* cps:/var/www/html/natural_scenes/
+	scp -r denoise_examples* super_resolution_examples* $(WEBSITE)
 
 publish: publish_html publish_examples
 
