@@ -50,12 +50,6 @@ image_sets: \
 WEB=~/Data/web
 DB=$(WEB)/db
 
-movetocvis:
-	@mv $(DB)/*.zip /mnt/cvis/natural_scenes
-	@touch /mnt/cvis/natural_scenes/*.zip
-	@mv $(DB)/*.tar /mnt/cvis/natural_scenes
-	@touch /mnt/cvis/natural_scenes/*.tar
-
 convert_ppm:
 	@mkdir -p $(DEST)
 	@find $(SRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 0 -q 3 {} > $(DEST)/\`basename {} .nef\`.ppm"
@@ -266,7 +260,7 @@ create_sr_example_stats:
 	find $(SREXAMPLESDEST2) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats.sh {} $(SREXAMPLES4x4)
 	find $(SREXAMPLESDEST3) -name "*.ppm" | xargs -P $(MAXPROCS) -I{} ./create_sr_example_stats_noref.sh {} $(SREXAMPLES4x4)
 
-WEBSITE=natural_scenes:/mnt/www/natural-scenes.cps.utexas.edu
+WEBSITE=laits:/mnt/www/natural-scenes.cps.utexas.edu
 
 publish_html:
 	scp style.css *.shtml *.png *.pdf logo.gif favicon.ico *_pixel_sensitivities.txt checksums.txt NormalizedD700SpectralSensitivities.txt $(WEBSITE)
@@ -279,7 +273,10 @@ publish_html:
 publish_examples:
 	scp -r denoise_examples* super_resolution_examples* $(WEBSITE)
 
-publish: publish_html publish_examples
+publish_code:
+	scp -r retina_V1_model $(WEBSITE)
+
+publish: publish_html publish_examples publish_code
 
 backup:
 	cp -av * /mnt/wsglab/Users/Perry/backups/natural_scenes
