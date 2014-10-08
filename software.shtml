@@ -8,7 +8,8 @@
 <p>
 The following site is a free service provided by the Center for Perceptual Systems at the University of Texas at Austin
 that offers image processing tools based upon the Recursive Conditional Means Method.
-<p>
+Current site applications include Denoising, Enlargement, and Realistic camera noise synthesis.
+
 <i>
 <div class="software_link">
 <a href="http://rcm.cps.utexas.edu">
@@ -18,18 +19,18 @@ http://rcm.cps.utexas.edu
 </a>
 </div>
 </i>
-Current site applications include:
-<ul>
-<li>
-Denoising
-</li>
-<li>
-Enlargement
-</li>
-<li>
-Realistic camera noise synthesis
-</li>
-</ul>
+
+<p>
+The following MATLAB code implements the Retina V1 Model.
+The Retina V1 Model predicts the contrast detection threshold of a target in a background.
+<div class="software_link">
+<p>
+<i>
+<a href="retina_V1_model">MATLAB Retina V1 Model Software</a>
+<br>
+<a href="retina_V1_model.zip">[Download ZIP]</a>
+</i>
+</div>
 
 </div>
 
