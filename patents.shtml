@@ -7,14 +7,40 @@
 <h2>Patents</h2>
 <p>
 <div class="citation1">
+Using higher order statistics to estimate pixel values in digital image processing to improve accuracy and computation
+efficiency
+<br>
+<a href="https://www.google.com/patents/WO2012021502A2?cl=en">
+[Google Patents]
+</a>
+<br>
 <a href="http://www.otc.utexas.edu/ATdisplay.jsp?id=1008">
-Natural Image Point Prediction Method
+[University of Texas OTC]
 </a>
 </div>
+
+<div class="citation1">
+Recursive conditional means image denoising
+<br>
+<a href="https://www.google.com/patents/WO2014070273A1?cl=en">
+[Google Patents]
+</a>
+<br>
+<a href="http://www.otc.utexas.edu/ATdisplay.jsp?id=1008">
+[University of Texas OTC]
+</a>
+</div>
+
 <p>
 <div class="citation1">
-<a href="http://www.otc.utexas.edu/ATdisplay.jsp?id=910">
 An Optimized Image Defocus Detection and Estimation Method that works on Natural Images
+<br>
+<a href="http://www.google.com/patents/CA2827236A1?cl=en">
+[Google Patents]
+</a>
+<br>
+<a href="http://www.otc.utexas.edu/ATdisplay.jsp?id=910">
+[University of Texas OTC]
 </a>
 </div>
 
