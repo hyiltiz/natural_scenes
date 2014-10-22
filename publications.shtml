@@ -1,0 +1,108 @@
+<!--#include virtual="open.shtml" -->
+<!--#include virtual="header.shtml" -->
+
+<div class="content">
+
+<p>
+<h2>Publications</h2>
+<p>
+<a name="defocus"></a>
+<h2>Defocus</h2>
+<p>
+<div class="citation1">
+<a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_SPIE_2012.pdf">
+Burge J & Geisler WS (2012). Optimal defocus estimates from individual images
+for autofocusing a digital camera. Proceedings of the SPIE, 8299, 82990: E1-E12,
+January: Burlingame, CA.
+</a>
+</div>
+<div class="citation1">
+<a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_PNAS_2011.pdf">
+Burge J, Geisler WS (2011). Optimal defocus estimation in individual natural
+images. Proceedings of the National Academy of Sciences, 108 (40): 16849-16854.
+</a>
+</div>
+<div class="citation1">
+<a href="http://jburge.cps.utexas.edu/research/Publications_files/BurgeGeisler_OSA_2011.pdf">
+Burge J, Geisler WS (2011). Optimal image-based defocus estimates from
+individual natural images. Proceedings of the Optical Society of America:
+Imaging Systems & Applications, July: Toronto, Canada.
+</a>
+</div>
+<a name="superresolution"></a>
+<h2>Super-Resolution</h2>
+<div class="citation1">
+<a href="DAntona-et-al-2013.pdf">
+D&#39;Antona AD, Perry JS & Geisler WS (2013) Humans make efficient use of natural
+image statistics when performing spatial interpolation. Journal of Vision,
+13(14):11, 1-13.
+</a>
+</div>
+<a name="denoising"></a>
+<h2>Denoising</h2>
+<!--
+<div class="citation1">
+Perry JS & Geisler WS (2013). Natural scene statistics for image denoising. (In Review)
+</div>
+-->
+<div class="citation1">
+<a href="RCM_denoising_TechReport.pdf">
+Perry JS & Geisler WS (2013) Natural scene statistics for image denoising. Technical Report UT-CPS-TR-13-001, Austin:
+Center for Perceptual Systems.
+</a>
+</div>
+<a name="rv1"></a>
+<h2>Retina Model</h2>
+<div class="citation1">
+<a href="RV1_model_2014.pdf">
+Bradley C, Abrams J, & Geisler WS, Retina-V1 model of detectability across the visual field (2014)
+Journal of Vision 14(12):22, 1-22.
+</a>
+</div>
+<a name="ccp"></a>
+<h2>Other</h2>
+<div class="citation1">
+<a href="Burge_Geisler_JOV_2014.pdf">
+Burge J & Geisler WS (2014) Optimal disparity estimation in natural stereo images. Journal of Vision, 14(2):1, 1-18.
+</a>
+</div>
+<div class="citation1">
+<a href="http://www.journalofvision.org/content/11/12/14.full.pdf+html">
+Geisler WS & Perry JS (2011). Statistics for optimal point prediction in
+natural images. Journal of Vision. October 19, 2011 vol. 11 no. 12 article 14.
+</a>
+</div>
+<div class="citation1">
+<a href="GeislerPerry-IAO-2011.pdf">
+Geisler WS, Perry JS (2011). High-order statistics for point prediction in
+natural images. Imaging Systems Applications, OSA Technical Digest (CD)
+Optical Society of America, paper IMC1.
+</a>
+</div>
+<div class="citation1">
+<a href="GeislerPerryVisNeuro09.pdf">
+WS Geisler, JS Perry (2009).
+Contour statistics in natural images: Grouping across occlusions
+Visual Neuroscience, 26, 109-121.
+</a>
+</div>
+<div class="citation1">
+<a href="Geisler_et_al_SPIE_2008.pdf">
+WS Geisler, JS Perry, AD Ing (2008).
+Natural Systems Analysis.
+SPIE Proceedings 6806, Human Vision and Electronic Imaging XIII, February 13.
+</a>
+</div>
+<div class="citation1">
+<a href="Geisler_et_al_VR_2001.pdf">
+WS Geisler, JS Perry, BJ Super, DP Gallogly (2001).
+Edge co-occurrence in natural images predicts contour grouping performance.
+Vision Research 41, 711-724.
+</a>
+</div>
+
+</div>
+
+<!--#include virtual="menu.shtml" -->
+<!--#include virtual="footer.shtml" -->
+<!--#include virtual="close.shtml" -->

@@ -33,6 +33,11 @@ all_sr2: \
 	pr7_download \
 	create_sr_example_stats
 
+all_ccp: \
+	create_ccp_example_images \
+	create_ccp_example_pages \
+	create_ccp_example_stats
+
 image_sets: \
 	convert_ppm \
 	exifzips \
@@ -188,6 +193,17 @@ create_dn_example_stats:
 	find $(DNEXAMPLES1) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES1)
 	find $(DNEXAMPLES2) -name "*.original.ppm" | xargs -P $(MAXPROCS) -I{} ./create_dn_example_stats.sh {} $(DNEXAMPLES2)
 
+CCPEXAMPLES=ccp_examples
+
+create_ccp_example_images:
+	mkdir -p $(CCPEXAMPLES)
+	rm -f $(CCPEXAMPLES)/*
+	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_ccp_example_images.sh {} $(CCPEXAMPLES)
+
+create_ccp_example_pages:
+
+create_ccp_example_stats:
+
 compare_dn:
 	@echo Noisy:
 	@find $(DNEXAMPLES1) -name "*.original.ppm"| sed 's,.original.ppm,,' | xargs -I{} sh -c "echo -e \"{}.original.ppm\n{}.noisy.ppm\""|~/Projects/point_prediction/xstats 2> /dev/null
@@ -275,6 +291,9 @@ publish_examples:
 
 publish_code:
 	scp -r retina_V1_model $(WEBSITE)
+	rm -f retina_V1_model.zip
+	zip -r retina_V1_model.zip retina_V1_model
+	scp retina_V1_model.zip $(WEBSITE)
 
 publish: publish_html publish_examples publish_code
 

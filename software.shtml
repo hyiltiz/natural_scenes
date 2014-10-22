@@ -5,6 +5,8 @@
 
 <p>
 <h2>Software</h2>
+<a name="superresolution"></a>
+<a name="denoising"></a>
 <p>
 The following site is a free service provided by the Center for Perceptual Systems at the University of Texas at Austin
 that offers image processing tools based upon the Recursive Conditional Means Method.
@@ -20,6 +22,7 @@ http://rcm.cps.utexas.edu
 </div>
 </i>
 
+<a name="rv1"></a>
 <p>
 The following MATLAB code implements the Retina V1 Model.
 The Retina V1 Model predicts the contrast detection threshold of a target in a background.
