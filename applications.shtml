@@ -83,9 +83,12 @@ method based upon Natural Scene Statistics.
 <!--#include virtual="denoise1_sigma5.shtml" -->
 <p>
 
+<!--
 <a name="ccp"></a>
 <h2>Color channel prediction</h2>
 <!--#include virtual="color_channel_prediction.shtml" -->
+-->
+
 <p>
 </div>
 
