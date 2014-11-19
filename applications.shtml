@@ -87,6 +87,10 @@ method based upon Natural Scene Statistics.
 
 <a name="ccp"></a>
 <h2>Color channel prediction</h2>
+<p>
+In the following application examples, the images' red, green, or blue color channel was removed.  The color channel was
+then restored using RCM.  Each color channel was also restored using multiple linear regression for comparison.
+<p>
 <!--#include virtual="color_channel_prediction.shtml" -->
 
 <p>
