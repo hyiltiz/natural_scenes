@@ -75,19 +75,19 @@ method based upon Natural Scene Statistics.
 <h3>Natural Images Denoising</h3>
 <br>Medium Noise Levels<br>
 <!--#include virtual="denoise1_sigma10.shtml" -->
+<!--
 <br>High Noise Levels<br>
 <!--#include virtual="denoise1_sigma15.shtml" -->
+-->
 <br>Very High Noise Levels<br>
 <!--#include virtual="denoise1_sigma25.shtml" -->
 <br>Low Noise Levels<br>
 <!--#include virtual="denoise1_sigma5.shtml" -->
 <p>
 
-<!--
 <a name="ccp"></a>
 <h2>Color channel prediction</h2>
 <!--#include virtual="color_channel_prediction.shtml" -->
--->
 
 <p>
 </div>
