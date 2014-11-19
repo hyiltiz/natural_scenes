@@ -33,7 +33,10 @@ all_sr2: \
 	pr7_download \
 	create_sr_example_stats
 
+run: create_ccp_example_pages
+
 all_ccp: \
+	clean_ccp_example_pages \
 	create_ccp_example_images \
 	create_ccp_example_pages \
 	create_ccp_example_stats
@@ -195,12 +198,18 @@ create_dn_example_stats:
 
 CCPEXAMPLES=ccp_examples
 
+clean_ccp_example_pages:
+	rm -f color_channel_prediction.shtml
+	rm -f $(CCPEXAMPLES)/*.shtml
+	cp style.css $(CCPEXAMPLES)
+
 create_ccp_example_images:
 	mkdir -p $(CCPEXAMPLES)
 	rm -f $(CCPEXAMPLES)/*
 	find $(EXAMPLESSRC1) -name "*.nef" | xargs -P $(MAXPROCS) -I{} ./create_ccp_example_images.sh {} $(CCPEXAMPLES)
 
-create_ccp_example_pages:
+create_ccp_example_pages: clean_ccp_example_pages
+	find $(CCPEXAMPLES) -name "*.original.ppm" | sort | xargs -I{} ./create_ccp_example_pages.sh {} color_channel_prediction.shtml $(CCPEXAMPLES) "Color Channel Prediction"
 
 create_ccp_example_stats:
 
