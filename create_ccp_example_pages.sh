@@ -49,34 +49,34 @@ make_page () {
 	echo "<a href=\"../applications.shtml#ccp\">Previous Page</a>" >> $1
 	echo "<ul>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.compare.shtml'\">Input</button>" >> $1
+	echo "<button onclick=\"location.href='$2.compare.shtml'\">Original</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.gb.shtml'\">Missing Red Channel</button>" >> $1
+	echo "<button onclick=\"location.href='$2.gb.shtml'\">Red Removed</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.rcm.gb.shtml'\">RCM Restored Red</button>" >> $1
+	echo "<button onclick=\"location.href='$2.rcm.gb.shtml'\">RCM Red</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.mlr.gb.shtml'\">Linear Regression Restored Red</button>" >> $1
+	echo "<button onclick=\"location.href='$2.mlr.gb.shtml'\">MLR Red</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.rb.shtml'\">Missing Green Channel</button>" >> $1
+	echo "<button onclick=\"location.href='$2.rb.shtml'\">Green Removed</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.rcm.rb.shtml'\">RCM Restored Green</button>" >> $1
+	echo "<button onclick=\"location.href='$2.rcm.rb.shtml'\">RCM Green</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.mlr.rb.shtml'\">Linear Regression Restored Green</button>" >> $1
+	echo "<button onclick=\"location.href='$2.mlr.rb.shtml'\">MLR Green</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.rg.shtml'\">Missing Blue Channel</button>" >> $1
+	echo "<button onclick=\"location.href='$2.rg.shtml'\">Blue Removed</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.rcm.rg.shtml'\">RCM Restored Blue</button>" >> $1
+	echo "<button onclick=\"location.href='$2.rcm.rg.shtml'\">RCM Blue</button>" >> $1
 	echo "</li>" >> $1
 	echo "<li>" >> $1
-	echo "<button onclick=\"location.href='$2.mlr.rg.shtml'\">Linear Regression Restored Blue</button>" >> $1
+	echo "<button onclick=\"location.href='$2.mlr.rg.shtml'\">MLR Blue</button>" >> $1
 	echo "</li>" >> $1
 	echo "</ul>" >> $1
 	echo "</div>" >> $1

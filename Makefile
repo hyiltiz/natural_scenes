@@ -33,7 +33,7 @@ all_sr2: \
 	pr7_download \
 	create_sr_example_stats
 
-run: create_ccp_example_pages
+run: create_ccp_example_pages create_ccp_example_stats
 
 all_ccp: \
 	clean_ccp_example_pages \
@@ -212,6 +212,7 @@ create_ccp_example_pages: clean_ccp_example_pages
 	find $(CCPEXAMPLES) -name "*.original.ppm" | sort | xargs -I{} ./create_ccp_example_pages.sh {} color_channel_prediction.shtml $(CCPEXAMPLES) "Color Channel Prediction"
 
 create_ccp_example_stats:
+	find $(CCPEXAMPLES) -name "*.original.ppm" | sort | xargs -P $(MAXPROCS) -I{} ./create_ccp_example_stats.sh {} $(CCPEXAMPLES)
 
 compare_dn:
 	@echo Noisy:

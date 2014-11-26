@@ -19,7 +19,7 @@ img_bn=$(basename $1 .nef)
 img_dir=$2
 
 # convert from nef to ppm and label with 'original'
-echo "dcraw -c $img_fn > $2/$img_bn.original.ppm"
+echo "dcraw -6 -q 3 -o 1 -v -c $img_fn > $2/$img_bn.original.ppm"
 dcraw -c $img_fn > $2/$img_bn.original.ppm
 
 # crop and convert to png
