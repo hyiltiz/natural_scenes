@@ -31,8 +31,16 @@ html_fn=$2
 img_dir=$3
 title=$4
 
-make_link () {
-	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.png\"></a>" >> $4
+make_link_rg () {
+	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.rg.png\"></a>" >> $4
+}
+
+make_link_rb () {
+	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.rb.png\"></a>" >> $4
+}
+
+make_link_gb () {
+	echo "<a href=\"$1\" class=\"example_link\"><img src=\"$2/$3.thumb.gb.png\"></a>" >> $4
 }
 
 make_page () {
@@ -85,7 +93,16 @@ make_page () {
 	echo "<!--#include virtual=\"../close.shtml\" -->" >> $1
 }
 
-make_link $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
+# get rng
+N=$[ RANDOM % 3 ]
+
+if [ $N == 0 ]; then
+    make_link_rg $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
+elif [ $N == 1 ]; then
+    make_link_rb $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
+else
+    make_link_gb $img_dir/$img_bn.compare.shtml $img_dir $img_bn $html_fn
+fi
 
 make_page $img_dir/$img_bn.compare.shtml $img_bn cropped "$title"
 make_page $img_dir/$img_bn.gb.shtml $img_bn gb "$title"

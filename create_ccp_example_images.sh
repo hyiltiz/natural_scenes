@@ -56,4 +56,9 @@ convert $imopts $2/$img_bn.mlr.gb.ppm $2/$img_bn.mlr.gb.png
 convert $imopts $2/$img_bn.mlr.rg.ppm $2/$img_bn.mlr.rg.png
 convert $imopts $2/$img_bn.mlr.rb.ppm $2/$img_bn.mlr.rb.png
 
+# convert to colored thumbnails
+convert $imopts -resize 42x28 $2/$img_bn.rg.png $2/$img_bn.thumb.rg.png
+convert $imopts -resize 42x28 $2/$img_bn.rb.png $2/$img_bn.thumb.rb.png
+convert $imopts -resize 42x28 $2/$img_bn.gb.png $2/$img_bn.thumb.gb.png
+
 exit 0

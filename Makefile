@@ -33,8 +33,6 @@ all_sr2: \
 	pr7_download \
 	create_sr_example_stats
 
-run: create_ccp_example_pages create_ccp_example_stats
-
 all_ccp: \
 	clean_ccp_example_pages \
 	create_ccp_example_images \
