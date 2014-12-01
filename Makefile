@@ -295,7 +295,7 @@ publish_html:
 	scp open_example_cps.shtml $(WEBSITE)/open_example.shtml
 
 publish_examples:
-	scp -r denoise_examples* super_resolution_examples* $(WEBSITE)
+	scp -r denoise_examples* super_resolution_examples* ccp_examples $(WEBSITE)
 
 publish_code:
 	scp -r retina_V1_model $(WEBSITE)
