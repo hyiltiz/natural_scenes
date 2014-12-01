@@ -252,6 +252,23 @@ The data and a description of the contents are available at
 natural-scenes.cps.utexas.edu/kodakdb
 </a>
 
+<h3>Human Made Scene Collection</h3>
+<table>
+<tr><td>Content</td><td>Indoor and outdoor scenes containing human made objects</td></tr>
+<tr><td>Location</td><td><a
+href="https://www.google.com/maps/place/Austin,+TX/@30.3077609,-97.7534014,11z/data=!3m1!4b1!4m2!3m1!1s0x8644b599a0cc032f:0x5d9b464bd469d57a">
+Austin, Texas</a></td></tr>
+<tr><td>Total images</td><td>197</td></tr>
+<tr><td>Image sets</td><td>1</td></tr>
+<tr><td>Total uncompressed disk space requirements</td><td>14GB</td></tr>
+</table>
+<h4>
+Set 1 (12GB)
+<a href="http://natural-scenes.cps.utexas.edu/db/cps2014.exif.zip">[Exif metadata]</a>
+</h4>
+<a class="image_link"
+href="http://natural-scenes.cps.utexas.edu/db/cps2014.ppm.zip"><img src="cps2014.montage.png"></a>
+
 </div>
 
 <!--#include virtual="menu.shtml" -->
