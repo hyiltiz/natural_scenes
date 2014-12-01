@@ -53,6 +53,13 @@ image_sets: \
 	thumbs_jb \
 	montages_jb
 
+asdf: \
+	convert_ppm_human_made \
+	exifzips_human_made \
+	ppmzips_human_made \
+	thumbs_human_made \
+	montages_human_made
+
 WEB=~/Data/web
 DB=$(WEB)/db
 
@@ -128,6 +135,34 @@ thumbs_jb:
 
 montages_jb:
 	@montage -geometry 42x28+1+1 -tile 12x `find $(JBTHUMBS_DEST) -name '*.png'` cps2010-2011.montage.png
+
+#############################################
+# support for humanmade image sets
+#############################################
+
+HMSRC=~/Data/nikond700db/human_made
+HMDEST=~/Data/nikond700db/human_made_rgb_ahd_16bit
+
+convert_ppm_human_made:
+	@mkdir -p $(HMDEST)
+	@find $(HMSRC) -name "*.nef" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "dcraw -c -v -4 -o 0 -q 3 {} > $(HMDEST)/\`basename {} .nef\`.ppm"
+
+exifzips_human_made:
+	find $(HMSRC) -name '*.exif' | zip -j -@ $(DB)/cps2014.exif.zip
+	@ls -1 $(DB)/*.exif.zip
+
+ppmzips_human_made:
+	find $(HMDEST) -name '*.ppm' | zip -j -@ $(DB)/cps2014.ppm.zip
+	@ls -1 $(DB)/*.ppm.zip
+
+HMTHUMBS_DEST=~/Data/nikond700db/human_made_thumbs
+
+thumbs_human_made:
+	@mkdir -p $(HMTHUMBS_DEST)
+	@find $(HMDEST) -name "*.ppm" | xargs --verbose -P $(MAXPROCS) -I{} sh -c "convert -contrast-stretch 2%x1% -resize 42x28 -gamma 2.2 {} $(HMTHUMBS_DEST)/\`basename {} .ppm\`.thumb.png"
+
+montages_human_made:
+	@montage -geometry 42x28+1+1 -tile 12x `find $(HMTHUMBS_DEST) -name '*.png'` cps2014.montage.png
 
 #############################################
 
