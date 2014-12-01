@@ -90,11 +90,13 @@ method based upon Natural Scene Statistics.
 <p>
 In the following application examples, the image's red, green, or blue color channel was removed.
 <p>
-The missing color channel was then restored using one of two methods:<br>
+The missing color channel was then restored using one of two natural scene statistics methods:<br>
 <ol>
-<li>A natural scenes statistics method, Recursive Conditional Means (RCM)
-<li>A standard statistical method, Multiple Linear Regression (MLR)
+<li>A nonparametric method, Recursive Conditional Means (RCM)
+<li>A parametric method, Multiple Linear Regression (MLR)
 </ol>
+<p>
+On average across all images and channels the mean-squared error (MSE) for RCM is 10% lower than for MLR.
 <p>
 <!--#include virtual="color_channel_prediction.shtml" -->
 
